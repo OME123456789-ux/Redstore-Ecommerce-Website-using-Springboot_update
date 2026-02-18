@@ -6,19 +6,19 @@ RedStore is a full‑stack e‑commerce demo application built with **Spring Boo
 
 **Home page**
 
-![Home](C:/Users/mothu/.cursor/projects/c-Users-mothu-Downloads-Redstore-Ecommerce-Website-using-Springboot-main-Redstore-Ecommerce-Website-using-Springboot-main/assets/c__Users_mothu_AppData_Roaming_Cursor_User_workspaceStorage_f9d864583e73032ebf53b3c8e38453b4_images_image-c0b1d93a-1415-421c-81a2-f514ea4b6261.png)
+![Home](assests/Screenshot%202026-02-18%20204141.png)
 
 **Products page**
 
-![Products](C:/Users/mothu/.cursor/projects/c-Users-mothu-Downloads-Redstore-Ecommerce-Website-using-Springboot-main-Redstore-Ecommerce-Website-using-Springboot-main/assets/c__Users_mothu_AppData_Roaming_Cursor_User_workspaceStorage_f9d864583e73032ebf53b3c8e38453b4_images_image-bc65f586-13b8-44e6-aba6-6e298e5b9ea3.png)
+![Products](assests/Screenshot%202026-02-18%20204159.png)
 
 **Account page**
 
-![Account](C:/Users/mothu/.cursor/projects/c-Users-mothu-Downloads-Redstore-Ecommerce-Website-using-Springboot-main-Redstore-Ecommerce-Website-using-Springboot-main/assets/c__Users_mothu_AppData_Roaming_Cursor_User_workspaceStorage_f9d864583e73032ebf53b3c8e38453b4_images_image-1ccb87ed-4bc2-43c5-8372-17488398e4dd.png)
+![Account](assests/Screenshot%202026-02-18%20204303.png)
 
 **Cart page**
 
-![Cart](C:/Users/mothu/.cursor/projects/c-Users-mothu-Downloads-Redstore-Ecommerce-Website-using-Springboot-main-Redstore-Ecommerce-Website-using-Springboot-main/assets/c__Users_mothu_AppData_Roaming_Cursor_User_workspaceStorage_f9d864583e73032ebf53b3c8e38453b4_images_image-88a173e9-33a0-48cb-8874-98d6f7625c4b.png)
+![Cart](assests/Screenshot%202026-02-18%20204330.png)
 
 ### Tech stack
 
