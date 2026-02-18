@@ -65,8 +65,6 @@ public class usersController {
 	public users login(@RequestBody Map<String, String> payload) {
 		String username = payload.get("username");
 		String password = payload.get("password");
-		return usersService.getByUsername(username)
-			.filter(u -> u.getPassword() != null && u.getPassword().equals(password))
-			.orElseThrow(() -> new RuntimeException("Invalid credentials"));
+		return usersService.login(username, password);
 	}
 }
