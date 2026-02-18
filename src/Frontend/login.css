@@ -1,0 +1,657 @@
+/* Login Page CSS - Amazon/Flipkart/Myntra Style */
+/* Signup Page CSS - Amazon/Flipkart/Myntra Style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #f8f9fa;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Login Page Specific Styles */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  padding-top: 120px; /* Account for fixed header */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  overflow-y: auto;
+}
+
+.login-container {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+  padding: 40px;
+  width: 100%;
+  max-width: 450px;
+  position: relative;
+  overflow: visible; /* Changed from hidden to visible */
+  margin: 20px;
+
+}
+
+.login-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Keep header on login page but fix positioning */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #232f3e 0%, #37475a 100%);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Override header button styles for login form */
+.login-container .login-btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: white !important;
+  border: none !important;
+  width: 100% !important;
+  padding: 15px !important;
+  border-radius: 8px !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  margin-bottom: 25px !important;
+  position: relative !important;
+  z-index: 100 !important;
+  min-height: 50px !important;
+}
+
+/* Ensure main nav doesn't cause layout issues */
+.main-nav {
+  background: rgba(0,0,0,0.1);
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 30px 20px;
+    margin: 10px;
+  }
+  
+  .login-page {
+    padding: 20px 10px;
+    padding-top: 100px;
+  }
+  
+  .header {
+    padding: 5px 0;
+  }
+}
+
+.login-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.login-header h1 {
+  color: #232f3e;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.login-header p {
+  color: #666;
+  font-size: 16px;
+}
+
+.error-message {
+  background: #fee;
+  color: #c33;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #c33;
+  display: none;
+}
+
+.success-message {
+  background: #efe;
+  color: #363;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border-left: 4px solid #363;
+  display: none;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  color: #232f3e;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 15px 16px;
+  border: 2px solid #e1e5e9;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #666;
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: auto;
+  margin: 0;
+}
+
+.forgot-link {
+  color: #667eea;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.forgot-link:hover {
+  color: #5a67d8;
+  text-decoration: underline;
+}
+
+.login-container .login-btn {
+  width: 100%;
+  padding: 15px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 10;
+}
+
+.login-container .login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.divider {
+  text-align: center;
+  margin: 25px 0;
+  position: relative;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e1e5e9;
+}
+
+.divider span {
+  background: white;
+  padding: 0 15px;
+  color: #666;
+  font-size: 14px;
+}
+
+.social-login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.social-btn {
+  padding: 12px;
+  border: 2px solid #e1e5e9;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.social-btn.google {
+  color: #db4437;
+}
+
+.social-btn.google:hover {
+  border-color: #db4437;
+  background: #fef7f7;
+}
+
+.social-btn.facebook {
+  color: #4267B2;
+}
+
+.social-btn.facebook:hover {
+  border-color: #4267B2;
+  background: #f7f9ff;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.signup-link::before {
+  content: 'New to RedStore?';
+  display: block;
+  color: #666;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #ff9900, #ff6b35);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  text-align: center;
+  line-height: 1;
+  word-wrap: normal;
+  word-break: keep-all;
+}
+
+.signup-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: left 0.5s;
+}
+
+.signup-btn:hover::before {
+  left: 100%;
+}
+
+.signup-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(255, 153, 0, 0.3);
+}
+
+.signup-btn:active {
+  transform: translateY(-1px);
+}
+
+.signup-btn i {
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* Footer Styles - RedStore Style (Inspired by Amazon & Flipkart) */
+.footer {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  color: white;
+  padding: 50px 0 30px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+.footer-column h3 {
+  color: #ff6b35;
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.footer-column ul {
+  list-style: none;
+}
+
+.footer-column ul li {
+  margin: 12px 0;
+  color: #b8c5d6;
+  font-size: 14px;
+}
+
+.footer-column ul li a {
+  color: #b8c5d6;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.footer-column ul li a:hover {
+  color: #ff6b35;
+  transform: translateX(5px);
+}
+
+.footer-column ul li a::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  width: 0;
+  height: 2px;
+  background: #ff6b35;
+  transition: width 0.3s ease;
+  transform: translateY(-50%);
+}
+
+.footer-column ul li a:hover::before {
+  width: 6px;
+}
+
+.contact-info {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 107, 53, 0.2);
+}
+
+.contact-info p {
+  color: #b8c5d6;
+  font-size: 14px;
+  margin: 8px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.contact-info p i {
+  color: #ff6b35;
+  font-size: 16px;
+  width: 16px;
+}
+
+.contact-info p a {
+  color: #b8c5d6;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.contact-info p a:hover {
+  color: #ff6b35;
+  text-decoration: underline;
+}
+
+.footer-separator {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ff6b35, transparent);
+  margin: 0 20px 30px 20px;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-bottom-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 25px;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+}
+
+.footer-logo .logo-text {
+  color: #ff6b35;
+  font-size: 24px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer-language {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.language-select {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid #ff6b35;
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.language-select:hover {
+  background: rgba(255, 107, 53, 0.1);
+}
+
+.language-select option {
+  background: #1a1a2e;
+  color: #ffffff;
+}
+
+.country {
+  color: #b8c5d6;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.footer-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255, 107, 53, 0.3);
+}
+
+.footer-links a {
+  color: #b8c5d6;
+  text-decoration: none;
+  font-size: 12px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.footer-links a:hover {
+  color: #ff6b35;
+  text-decoration: underline;
+}
+
+.copyright {
+  color: #8a9bb8;
+  font-size: 12px;
+  margin-left: auto;
+  font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-container {
+    padding: 30px 20px;
+    margin: 20px;
+  }
+  
+  .social-login {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+  
+  .contact-info {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+  
+  .footer-bottom-content {
+    flex-direction: column;
+    gap: 15px;
+    align-items: flex-start;
+  }
+  
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  
+  .copyright {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-header h1 {
+    font-size: 24px;
+  }
+  
+  .form-group input {
+    padding: 12px 14px;
+  }
+  
+  .login-container .login-btn {
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  .signup-btn {
+    padding: 14px;
+    font-size: 16px;
+    white-space: nowrap;
+    text-align: center;
+    line-height: 1;
+    word-wrap: normal;
+    word-break: keep-all;
+  }
+  
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .footer-bottom-content {
+    text-align: center;
+    align-items: center;
+  }
+  
+  .footer-links {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+/* Loading animation for button */
+.signup-btn.loading {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.signup-btn.loading::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border: 2px solid transparent;
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-left: 10px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+

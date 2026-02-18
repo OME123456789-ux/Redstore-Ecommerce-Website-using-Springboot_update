@@ -1,0 +1,15 @@
+create database website;
+use website;
+select * from users;
+select * from Orders;
+select * from products;
+select * from contact_messages ;
+select * from  cart;
+select * from Addresses;
+UPDATE orders SET status = 'Delivered' WHERE order_id = 1;
+drop table users ;
+drop table orders;
+drop table products;
+drop table contact_messages;
+drop table cart;
+drop table addresses;

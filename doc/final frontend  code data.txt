@@ -1,0 +1,2737 @@
+
+
+Shopping.HTML code :
+==========================================================================
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="shopping.css" />
+  <title>Shopping</title>
+</head>
+<body>
+<div class="overlay">
+  <video autoplay muted loop id="bgVideo">
+    <source src="./W16 TV Ad.mp4" type="video/mp4" />
+  </video>
+
+</div>
+
+  
+  <div class="div1">
+    <img src="./logo-white.png" alt="logo" />
+    <div class="div2">
+      <input type="text" id="searchInput" placeholder=" Search products.." />
+      <ul>
+        <li><a href="shopping.html"><button class="zoom">Home</button></a></li>
+        <li><a href="#products"><button class="zoom">Products</button></a></li>
+        <li><a href="#contact-section"><button class="zoom">Contact</button></a></li>
+        <li><a href="Login.html"><button class="zoom" id="cartIcon">🛒</button></a></li>
+        <li><a href="signup.html"><button class="zoom">Signup</button></a></li>
+        <li><a href="login.html"><button class="zoom">Login</button></a></li>
+        
+      </ul>
+    </div>
+    <div class="div3">
+      <h1><i>Bringing happiness to your doorstep</i></h1>
+      <h2>One order at a time.</h2>
+      <p>It. Love it. Buy it.</p>
+      <a href="Login.html"><button class="zoom">Explore</button></a>
+    </div>
+    <div class="div4">
+      <img class="zoom" src="./image1.png" alt="image" height="500px" width="500px" />
+    </div>
+  </div>
+
+  <div class="div5">
+    <img class="zoom" src="./product-4.jpg" alt="photo" height="300px" width="300px" onclick="addToCart('Product 4', 300)" />
+    <img class="zoom" src="./product-11.jpg" alt="photo" height="300px" width="300px" onclick="addToCart('Product 11', 300)" />
+    <img class="zoom" src="./product-3.jpg" alt="photo" height="300px" width="300px" onclick="addToCart('Product 3', 300)" />
+  </div>
+
+  
+
+  <div class="div6" id="products">
+    <h1><i>Featured Products</i></h1>
+    <div class="div7">
+      <img class="zoom" src="./product-6.jpg" alt="photo" height="300px" width="300px" onclick="addToCart('Product 6', 300)" />
+      <img class="zoom" src="./product-8.jpg" alt="photo" height="300px" width="300px" onclick="addToCart('Product 8', 300)" />
+      <img class="zoom" src="./category-1.jpg" alt="photo" height="300px" width="300px" onclick="addToCart('Category 1', 300)" />
+    </div>
+  </div>
+
+  <div class="div8">
+    <h1><i><b>Quality you can trust, at a price you’ll love!</b></i></h1>
+    <div class="div9">
+      <img class="zoom" src="./gallery-4.jpg" alt="photo" height="300px" width="300px" onclick="addToCart('Gallery 4', 300)" />
+      <img class="zoom" src="./exclusive.png" alt="photo" height="300px" width="300px" onclick="addToCart('Exclusive', 300)" />
+      <img class="zoom" src="./category-2.jpg" alt="photo" height="300px" width="300px" onclick="addToCart('Category 2', 300)" />
+    </div>
+  </div>
+
+  <div class="div10" id="contact-section">
+    <h1><i>Contact Us</i></h1>
+    <p style="margin-top: 10px; font-size: 18px;">📞 Phone: 9492451504</p>
+    <p style="margin-bottom: 20px; font-size: 18px;">
+      📧 Email: <a href="mailto:mothukuriomeprakash@gmail.com">mothukuriomeprakash@gmail.com</a>
+    </p>
+    <h2><i>Powered By</i></h2>
+    <div class="logo-strip">
+      <img src="./logo-oppo.png" alt="oppo" />
+      <img src="./logo-paypal.png" alt="paypal" />
+      <img src="./logo-philips.png" alt="philips" />
+      <img src="./play-store.png" alt="play-store" />
+      <img src="./app-store.png" alt="app-store" />
+    </div>
+  </div>
+
+   <div id="accountPopup" class="account-popup" style="display: none;">
+    <h3>User Details</h3>
+    <p><strong>Full Name:</strong> <span id="userName"></span></p>
+    <p><strong>Email:</strong> <span id="userEmail"></span></p>
+    <p><strong>Phone:</strong> <span id="userPhone"></span></p>
+    <button onclick="document.getElementById('accountPopup').style.display='none'">Close</button>
+  </div>
+
+ 
+
+  <script>
+  window.onload = function () {
+    const userData = JSON.parse(localStorage.getItem("loggedInUser"));
+
+    
+    if (userData) {
+      document.getElementById("loginContainer").style.display = "none";
+      document.getElementById("signupContainer").style.display = "none";
+      document.getElementById("userContainer").style.display = "inline-block";
+    } else {
+      document.getElementById("loginContainer").style.display = "inline-block";
+      document.getElementById("signupContainer").style.display = "inline-block";
+      document.getElementById("userContainer").style.display = "none";
+    }
+
+   
+    document.getElementById("logoutBtn").onclick = function () {
+      localStorage.removeItem("loggedInUser");
+
+      
+      window.location.href = "shopping.html"; 
+    };
+  };
+     
+  </script>
+</body>
+</html>
+
+==============================================================================
+shopping.CSS code :
+================================================================
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/* === Background Video === */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* === Optional Dark Overlay over the video === */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);  /* You can increase opacity if needed */
+  z-index: -1;
+}
+
+
+.div1,
+.div2,
+.div3,
+.div4 {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.div1 {
+  height: 800px;
+  animation: fadeIn 1.2s ease;
+}
+
+.div2 {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: row;
+  margin-bottom: 50px;
+  padding-right: 100px;
+  margin-left: 30px;
+}
+
+.div2 ul {
+  margin-bottom: 50px;
+  display: flex;
+  list-style: none;
+  padding-top: 10px;
+}
+
+.div2 ul li a {
+  font-size: 20px;
+  text-decoration: none;
+  margin-left: 40px;
+  text-align: center;
+  color: black;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.div2 ul li a:hover {
+  transform: scale(1.1);
+  color: #007acc;
+  text-shadow: 0 0 10px #fff, 0 0 20px #00f, 0 0 30px #0ff;
+}
+
+.zoom {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.zoom:hover,
+.zoom:active {
+  transform: scale(1.2);
+}
+
+.div3 {
+  margin-left: 20px;
+  padding: 75px;
+  color: white;
+  
+}
+
+.div3 h1,
+.div3 h2,
+.div3 p {
+  animation: fadeIn 2s ease;
+}
+
+.div4 {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  padding-right: 110px;
+  height: 200px;
+  transition: transform 0.4s ease;
+  margin-bottom: 30px;
+}
+
+.div4:hover {
+  transform: scale(1.1);
+}
+
+button {
+  border-radius: 20px;
+  width: 90px;
+  height: 40px;
+  color: black;
+  background-color: aquamarine;
+  margin-top: 30px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #00e6ac;
+  box-shadow: 0 0 15px #00e6ac;
+}
+
+.div5 {
+  font-size: 30px;
+  background-color: azure;
+  text-align: center;
+  height: 500px;
+  animation: fadeIn 1.2s ease;
+}
+
+.div5 img {
+  margin-left: 60px;
+  margin-top: 90px;
+  transition: transform 0.4s ease;
+}
+
+.div5 img:hover {
+  transform: scale(1.1);
+}
+
+.div6 {
+  text-align: center;
+  height: 500px;
+  background-color: azure;
+}
+
+.div7 {
+  margin: 50px;
+  padding: 30px;
+}
+
+.div7 img {
+  margin-left: 60px;
+  transition: transform 0.4s ease;
+}
+
+.div7 img:hover {
+  transform: scale(1.1);
+}
+
+.div8 {
+  text-align: center;
+  height: 500px;
+  background-color: azure;
+  animation: fadeIn 1.2s ease-in;
+}
+
+.div9 {
+  margin: 50px;
+  padding: 30px;
+}
+
+.div9 img {
+  margin-top: 30px;
+  margin-left: 60px;
+  transition: transform 0.4s ease;
+}
+
+.div9 img:hover {
+  transform: scale(1.1);
+}
+
+.div10 {
+  color: black;
+  text-align: center;
+  height: auto;
+  padding: 20px;
+  background-color: rgb(226, 219, 219); 
+  animation: fadeIn 1.2s ease-in;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 255, 204, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.div5 img,
+.div7 img,
+.div9 img {
+  animation: float 3s ease-in-out infinite;
+}
+
+.div3 h2 {
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid black;
+  animation: typing 3s steps(20) forwards, blink 0.75s step-end infinite;
+}
+
+button.zoom {
+  animation: pulse 2s infinite;
+}
+
+.div5,
+.div6,
+.div8,
+.div10 {
+  animation: slideUp 1.5s ease both;
+}
+
+
+.logo-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 20px;
+}
+
+.logo-strip img {
+  height: 50px;
+  width: 180px;
+  transition: transform 0.3s ease;
+}
+
+.logo-strip img:hover {
+  transform: scale(1.1);
+}
+
+
+.search-container {
+  position: relative;
+}
+
+#searchInput {
+  padding: 8px 15px 8px 35px; 
+  border-radius: 20px;
+  border: 1px solid white;
+  /* border: 1px solid #080808; */
+  font-size: 16px;
+  width: 220px;
+  height: 38px;
+  transition: box-shadow 0.3s ease;
+  background: url('https://cdn-icons-png.flaticon.com/512/49/49116.png') no-repeat 10px center;
+  background-size: 18px 18px;
+  transition: all 0.3s ease;
+}
+
+#searchInput:focus {
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+}
+
+
+.div2 {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-direction: row;
+  padding-right: 40px;
+  gap: 15px;
+}
+
+
+#searchInput:focus {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+  outline: none;
+}
+
+#searchInput::placeholder{
+  color: white;
+}
+
+===============================================================
+Products.HTML code :
+===============================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="products.css" />
+  <title>Shopping</title>
+</head>
+<div>
+  <div class="overlay">
+  <video autoplay muted loop id="bgVideo">
+    <source src="./M&S Men's Style_ The Art of Tailoring - TV AD 2016.mp4" type="video/mp4" />
+  </video>
+
+</div>
+  <div class="div1">
+    <img src="./logo-white.png" alt="logo" />
+    <div class="div2">
+      <input type="text" id="searchInput" placeholder="Search products..." oninput="filterProducts()" />
+      <ul>
+        <li><a href="products.html"><button class="zoom">Home</button></a></li>
+        <li><a href="#products"><button class="zoom">Products</button></a></li>
+        <li><a href="#contact-section"><button class="zoom">Contact</button></a></li>
+        <li>
+          <a href="cart.html">
+            <button class="zoom">Cart 🛒<span id="cartCount" class="badge">0</span></button>
+          </a>
+        </li>
+        <li><a href="account.html"><button class="zoom">Account</button></a></li>
+       
+      </ul>
+    </div>
+
+    <div class="category-filter">
+  <label for="categorySelect"> Filter by Category:</label>
+  <div class="custom-select-wrapper">
+    <select id="categorySelect" onchange="filterByCategory(this.value)">
+      <option value="all">🌐 All</option>
+      <option value="shirts">👔 Shirts</option>
+      <option value="pants">👖 Pants</option>
+      <option value="tshirts">👕 T-Shirts</option>
+      <option value="shoes">👟 Shoes</option>
+    </select>
+  </div>
+</div>
+
+  <!-- Product Section -->
+<div id="products" class="div3">
+  <h1>Our Products</h1>
+  <div class="product-grid">
+    <div class="product-card" data-category="shirts">
+      <img src="./HM SHIRT" alt="Shirt" />
+      <h3>H&M</h3>
+      <h3>Slim Fit Easy-iron shirt</h3>
+      <p>₹1,500.00</p>
+      <button onclick="addToCart('H&M',1499.00)">Add to Cart</button>
+    </div>
+     <div class="product-card" data-category="shirts">
+      <img src="./levis" alt="Shoes" />
+      <h3>Roadster </h3>
+      <h3>Men's Solid Slim Fit Shirt</h3>
+      <p>₹2,799.00</p>
+      <button onclick="addToCart('Roadster', 2799.00)">Add to Cart</button>
+    </div>
+    <div class="product-card" data-category="shirts">
+      <img src="./WRONG.jpg" alt="Shoes" />
+      <h3>WROGN</h3>
+      <h3>Solid Slim Fit Pure Cotton</h3>
+      <p>₹1,356 </p>
+      <button onclick="addToCart('WROGN', 1356)">Add to Cart</button>
+    </div>
+    <div class="product-card" data-category="shirts">
+      <img src="./ZARA.jpeg" alt="Shoes" />
+      <h3>ZARA</h3>
+      <h3>ZARA Men Slim Fit</h3>
+      <p>₹1,299</p>
+      <button onclick="addToCart('ZARA', 1299)">Add to Cart</button>
+    </div>
+    <div class="product-card" data-category="pants">
+      <img src="hm phants" alt="Jacket" />
+      <h3>H&M</h3>
+      <h3>Loose Fit Cargo</h3>
+      <p>₹2,999</p>
+      <button onclick="addToCart('H&M',2999)">Add to Cart</button>
+    </div>
+    <div class="product-card" data-category="pants">
+      <img src="./Roadster phant.jpg" alt="Jeans" />
+      <h3>Roadster</h3>
+      <H3>Men Blue Solid Cargo</H3>
+      <p>₹999</p>
+      <button onclick="addToCart('Roadster', 999)">Add to Cart</button>
+    </div>
+    <div class="product-card" data-category="pants">
+      <img src="./WROGN PHANT.jpg" alt="Jeans" />
+      <h3>WROGN</h3>
+      <h3>Casual Loose Fit Denim</h3>
+      <p>₹1,819</p>
+      <button onclick="addToCart('WROGN ', 1819)">Add to Cart</button>
+    </div>
+    <div class="product-card" data-category="pants">
+      <img src="zara phant.jpg" alt="Jeans" />
+      <h3>ZARA</h3>
+      <h3>SLIM FIT JEANS</h3>
+      <p>₹2,000</p>
+      <button onclick="addToCart('ZARA ', 2000)">Add to Cart</button>
+    </div>
+    <div class="product-card"  data-category="tshirts">
+      <img src="hm t-shirt" alt="Jeans" />
+      <h3>H & M</h3>
+      <h3>Oversized Fit Printed mesh T-shirt</h3>
+      <p>₹3,000</p>
+      <button onclick="addToCart('H & M ', 3000)">Add to Cart</button>
+    </div>
+    <div class="product-card"  data-category="tshirts">
+      <img src="./Roadster t shirt" alt="Jeans" />
+      <h3>Roadster</h3>
+      <h3>The Lifestyle Pure Cotton T-shirt</h3>
+      <p>₹1,500</p>
+      <button onclick="addToCart('Roadster ', 1500)">Add to Cart</button>
+    </div>
+    <div class="product-card"  data-category="tshirts">
+      <img src="./wrogn t shirt.webp" alt="Jeans" />
+      <h3>WROGN</h3>
+      <h3>Casual Oversized T-Shirt | Beige</h3>
+      <p>₹1,000</p>
+      <button onclick="addToCart('WROGN', 1500)">Add to Cart</button>
+    </div>
+    <div class="product-card"  data-category="tshirts">
+      <img src="zara t shirt.jpeg" alt="Jeans" />
+      <h3>ZARA</h3>
+      <h3>ZARA T-SHIRT</h3>
+      <p>₹500</p>
+      <button onclick="addToCart('ZARA', 500)">Add to Cart</button>
+    </div>
+    <div class="product-card" data-category="shoes">
+      <img src="us shoes" alt="Jeans" />
+      <h3>U.S. Polo Assn.</h3>
+      <h3>CLARKIN 4.0 Men Canvas Sneakers</h3>
+      <p>₹1,215</p>
+      <button onclick="addToCart('U.S. Polo Assn.', 1215)">Add to Cart</button>
+    </div>
+    <div class="product-card" data-category="shoes">
+      <img src="redtape shoes" alt="Jeans" />
+      <h3>RED TAPE</h3>
+      <h3>Casual Sneaker Shoes For Men</h3>
+      <p>₹1,120</p>
+      <button onclick="addToCart('RED TAPE',1120)">Add to Cart</button>
+    </div>
+    <div class="product-card" data-category="shoes">
+      <img src="Louis Philippe  SHOES" alt="Jeans" />
+      <h3>Louis Philippe</h3>
+      <h3>Brown Lace Up Shoes</h3>
+      <p>₹5,899</p>
+      <button onclick="addToCart('Louis Philippe',5899)">Add to Cart</button>
+    </div>
+    <div class="product-card" data-category="shoes">
+      <img src="Sparx shoes" alt="Jeans" />
+      <h3>Sparx</h3>
+      <h3>Sparx Blue Running Shoes Men SM-904</h3>
+      <p>₹1,500</p>
+      <button onclick="addToCart('Sparx',1500)">Add to Cart</button>
+    </div>
+  </div>
+  </div>
+
+</div>
+</div>
+<!-- Contact Section -->
+<div class="div10" id="contact-section">
+  <h1><i>Contact Us</i></h1>
+  <p>📞 Phone: 9492451504</p>
+  <p>📧 Email: <a href="mailto:mothukuriomeprakash@gmail.com">mothukuriomeprakash@gmail.com</a></p>
+  <h2><i>Powered By</i></h2>
+    <div class="logo-strip">
+      <img src="./logo-oppo.png" alt="oppo" />
+      <img src="./logo-paypal.png" alt="paypal" />
+      <img src="./logo-philips.png" alt="philips" />
+      <img src="./play-store.png" alt="play-store" />
+      <img src="./app-store.png" alt="app-store" />
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function filterProducts() {
+  const query = document.getElementById("searchInput").value.toLowerCase();
+  const cards = document.querySelectorAll(".product-card");
+
+  cards.forEach(card => {
+    const text = card.innerText.toLowerCase();
+    card.style.display = text.includes(query) ? "block" : "none";
+  });
+}
+
+  // ✅ Update cart count on load
+  function updateCartNotification() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const cartIcon = document.getElementById("cartCount");
+    if (cartIcon) {
+      cartIcon.textContent = cart.length;
+    }
+  }
+
+  // ✅ Add item to cart and update badge
+  function addToCart(name, price) {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    cart.push({ name: name, price: price });
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartNotification();
+    alert(`${name} added to cart!`);
+  }
+
+  // ✅ Category Filter
+  function filterByCategory() {
+    const selected = document.getElementById("categorySelect").value.toLowerCase();
+    const cards = document.querySelectorAll(".product-card");
+    cards.forEach(card => {
+      const category = card.getAttribute("data-category");
+      card.style.display = selected === "all" || category === selected ? "block" : "none";
+    });
+  }
+
+  // ✅ Search Filter
+  function filterProducts() {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const cards = document.querySelectorAll(".product-card");
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      card.style.display = text.includes(query) ? "block" : "none";
+    });
+  }
+
+  // ✅ Call once on page load
+  updateCartNotification();
+</script>
+
+</body>
+</html>
+
+
+==========================================================
+Products.CSS code :
+==========================================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: radial-gradient(#e69464, #91c6e5);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/* === Background Video === */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* === Optional Dark Overlay over the video === */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);  /* You can increase opacity if needed */
+  z-index: -1;
+}
+#searchInput::placeholder{
+  color: white;
+}
+
+.div1,
+.div2,
+.div3,
+.div4 {
+  position: relative;
+  z-index: 1;
+}
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.div1 {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 10px 0;
+}
+
+
+.div2 {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-direction: row;
+  padding-right: 40px;
+  gap: 15px;
+}
+
+.div2 ul {
+  display: flex;
+  list-style: none;
+  padding-top: 10px;
+   margin-bottom: 50px; 
+}
+
+.div2 ul li a {
+  font-size: 18px;
+  text-decoration: none;
+  margin-left: 30px;
+  color: black;
+}
+
+.div2 ul li a:hover {
+  color: #007acc;
+  text-shadow: 0 0 10px #fff, 0 0 20px #00f;
+}
+
+.zoom {
+  transition: transform 0.3s ease;
+}
+.zoom:hover {
+  transform: scale(1.2);
+}
+
+#searchInput {
+  padding: 8px 15px 8px 35px;
+  border-radius: 20px;
+  border: 1px solid white;
+  font-size: 16px;
+  width: 220px;
+  height: 38px;
+  background: url('https://cdn-icons-png.flaticon.com/512/49/49116.png') no-repeat 10px center;
+  background-size: 18px 18px;
+  transition: 0.3s ease;
+}
+#searchInput:focus {
+  outline: none;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+}
+
+.category-filter {
+  text-align: center;
+  margin: 30px auto;
+  animation: fadeIn 1s ease-in-out;
+}
+.category-filter label {
+  font-size: 22px;
+  font-weight: bold;
+  margin-right: 10px;
+  animation: pulse 2s infinite;
+  color:white;
+}
+.custom-select-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.custom-select-wrapper select {
+  appearance: none;
+  background-color: #ffffff;
+  color: #333;
+  border: 2px solid #00e6ac;
+  padding: 12px 50px 12px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 5px 15px rgba(0, 230, 172, 0.2);
+  background-image: url('https://cdn-icons-png.flaticon.com/512/54/54616.png');
+  background-repeat: no-repeat;
+  background-position: right 15px center;
+  background-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.custom-select-wrapper select:hover {
+  box-shadow: 0 0 15px rgba(0, 230, 172, 0.5);
+  transform: scale(1.03);
+}
+
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+
+.div3 {
+  padding: 50px;
+  animation: fadeIn 1s ease;
+  
+}
+.div3 h1{
+  color: white;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  padding: 30px;
+}
+
+.product-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  padding: 20px;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+.product-card:hover {
+  transform: scale(1.05);
+}
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+button {
+   border-radius: 20px;
+  width: 90px;
+  height: 40px;
+  color: black;
+  background-color: aquamarine;
+  margin-top: 30px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #00e6ac;
+  box-shadow: 0 0 10px #00e6ac;
+}
+
+.div10 {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: rgb(240, 232, 232);
+  margin-top: 1px;
+  animation: fadeIn 1.2s ease-in;
+
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 255, 204, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.logo-strip {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+.logo-strip img {
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+.logo-strip img:hover {
+  transform: scale(1.1);
+}
+.badge {
+  background-color: red;
+  color: white;
+  font-size: 14px;
+  padding: 3px 7px;
+  border-radius: 50%;
+  vertical-align: top;
+  margin-left: 5px;
+}
+.product-card {
+  transition: all 0.3s ease;
+}
+=======================================================
+Cart.HTML code :
+========================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cart Page</title>
+  <link rel="stylesheet" href="cart.css" />
+</head>
+<body>
+
+  <div class="div1">
+    <img src="./logo-white.png" alt="Logo" class="logo" />
+    <div class="div2">
+        <ul>
+            <li><a href="products.html"><button class="zoom">Home</button></a></li>
+            <li><a href="products.html"><button class="zoom">Products</button></a></li>
+            <li><a href="#contact-section"><button class="zoom">Contact</button></a></li>
+            <li>
+                <a href="cart.html">
+                    <button class="zoom">Cart 🛒<span id="cartCount" class="badge">0</span></button>
+                </a>
+            </li>
+            <li><a href="account.html"><button class="zoom">Account</button></a></li>
+        </ul>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Your Shopping Cart</h2>
+    <div id="cartItems" class="cart-items"></div>
+
+    <div class="summary">
+      <h3>PRICE DETAILS</h3>
+      <p>Total MRP (items): ₹<span id="totalPrice">0.00</span></p>
+      <p>Discount: ₹<span id="discount">0.00</span></p>
+      <p>Platform Fee: ₹<span id="fee">20</span></p>
+      <hr />
+      <h4>Total Amount: ₹<span id="finalAmount">0.00</span></h4>
+      <button onclick="placeOrder()">PLACE ORDER</button>
+    </div>
+  </div>
+
+  <div class="contact" id="contact-section">
+    <h2>Contact Us</h2>
+    <p>📞 9492451504</p>
+    <p>📧 <a href="mailto:mothukuriomeprakash@gmail.com">mothukuriomeprakash@gmail.com</a></p>
+    <h2><i>Powered By</i></h2>
+    <div class="logo-strip">
+      <img src="./logo-oppo.png" alt="oppo" />
+      <img src="./logo-paypal.png" alt="paypal" />
+      <img src="./logo-philips.png" alt="philips" />
+      <img src="./play-store.png" alt="play-store" />
+      <img src="./app-store.png" alt="app-store" />
+    </div>
+  </div>
+  <script>
+  const cartItemsContainer = document.getElementById("cartItems");
+  const totalPriceElement = document.getElementById("totalPrice");
+  const discountElement = document.getElementById("discount");
+  const finalAmountElement = document.getElementById("finalAmount");
+
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // ✅ Display cart items
+  function updateCartDisplay() {
+    cartItemsContainer.innerHTML = "";
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      total += item.price;
+
+      const itemDiv = document.createElement("div");
+      itemDiv.classList.add("cart-item");
+      itemDiv.innerHTML = `
+        <p><strong>${item.name}</strong> - ₹${item.price}</p>
+        <button onclick="removeFromCart(${index})">Remove</button>
+      `;
+      cartItemsContainer.appendChild(itemDiv);
+    });
+
+    const discount = cart.length > 0 ? 0.1 * total : 0; // 10% discount
+    const fee = 20;
+    const final = total - discount + fee;
+
+    totalPriceElement.textContent = total.toFixed(2);
+    discountElement.textContent = discount.toFixed(2);
+    finalAmountElement.textContent = final.toFixed(2);
+
+    updateCartNotification();
+  }
+
+  // ✅ Remove item from cart
+  function removeFromCart(index) {
+    cart.splice(index, 1);
+    localStorage.setItem("cart", JSON.stringify(cart));
+    updateCartDisplay();
+  }
+
+  // ✅ Update cart count badge (on 🛒 icon)
+  function updateCartNotification() {
+    const cartIcon = document.getElementById("cartCount");
+    if (cartIcon) {
+      cartIcon.textContent = cart.length;
+    }
+  }
+
+  // ✅ Place order and store in user-based orderHistory
+  function placeOrder() {
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0) {
+      alert("❗ Please add items to your cart before placing the order.");
+      return;
+    }
+
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (!user) {
+      alert("⚠ Please login first to place an order.");
+      return;
+    }
+
+    const key = `orderHistory_${user.username}`;
+    const orderHistory = JSON.parse(localStorage.getItem(key)) || [];
+    const date = new Date().toLocaleString();
+
+    cart.forEach(item => {
+      orderHistory.push({ ...item, date: date });
+    });
+
+    localStorage.setItem(key, JSON.stringify(orderHistory));
+    localStorage.removeItem("cart");
+
+    alert("✅ Order Placed Successfully!");
+    location.reload();
+  }
+
+  // ✅ Initial call to display cart
+  updateCartDisplay();
+</script>
+
+
+</body>
+</html>
+========================================================
+Cart.CSS code :
+=============================================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: rgb(255, 248, 238);
+  /* background: radial-gradient(#e69464, #91c6e5); */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.div1 {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgb(226, 195, 158);
+  /* background: radial-gradient(#e69464, #91c6e5); */
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  height: 60px;
+  margin-left: 30px;
+}
+
+.div2 {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 15px;
+  padding-right: 40px;
+}
+
+.div2 ul {
+  display: flex;
+  list-style: none;
+}
+
+.div2 ul li a {
+  font-size: 18px;
+  text-decoration: none;
+  margin-left: 20px;
+  color: black;
+}
+
+.zoom {
+  transition: transform 0.3s ease;
+  border: 2px solid black;
+  border-radius: 20px;
+  padding: 5px 15px;
+  background-color: aquamarine;
+}
+
+.zoom:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 10px #00e6ac;
+  background-color: #00e6ac;
+}
+
+#searchInput {
+  padding: 8px 15px 8px 35px;
+  border-radius: 20px;
+  border: 1px solid #080808;
+  font-size: 16px;
+  width: 220px;
+  height: 38px;
+  background: url('https://cdn-icons-png.flaticon.com/512/49/49116.png') no-repeat 10px center;
+  background-size: 18px 18px;
+  transition: 0.3s ease;
+}
+
+#searchInput:focus {
+  outline: none;
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+}
+
+.cart-container {
+  padding: 40px;
+  background-color: #ffffffcc;
+  margin: 30px auto;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  animation: fadeIn 0.6s ease-in;
+}
+
+.cart-items {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.cart-item button {
+  background-color: crimson;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cart-item button:hover {
+  background-color: darkred;
+}
+
+.total-section {
+  text-align: right;
+  margin-top: 20px;
+  font-size: 22px;
+}
+
+.badge {
+     background-color: red;
+     color: white;
+     font-size: 14px;
+     padding: 3px 7px;
+     border-radius: 50%;
+     vertical-align: top;
+     margin-left: 5px;
+}
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: white;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.cart-items {
+  margin-bottom: 30px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0;
+}
+
+.cart-item p {
+  flex: 1;
+}
+
+.cart-item button {
+  background: red;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.summary {
+  border-top: 2px solid #ccc;
+  padding-top: 20px;
+}
+
+.summary p, .summary h4 {
+  margin-bottom: 10px;
+}
+
+.summary button {
+  background: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.contact {
+  text-align: center;
+  padding: 40px;
+  background: #f2f2f2;
+  margin-top: 500px;
+}
+
+
+.div10 {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: rgb(240, 232, 232);
+  animation: fadeIn 1.2s ease-in;
+  margin-top: 500px;
+}
+
+.logo-strip {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.logo-strip img {
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+.logo-strip img:hover {
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  0% { transform: translateY(-30px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+============================================================================
+Signup.HTML code :
+===================================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="signup.css" />
+</head>
+<body>
+  <div class="overlay">
+  <video autoplay muted loop id="bgVideo">
+    <source src="./M&S Men's Style_ The Art of Tailoring - TV AD 2016.mp4" type="video/mp4" />
+  </video>
+
+</div>
+    <div class="div1">
+      <img src="./logo-white.png" alt="logo" />
+    <div class="div2">
+      <input type="text" id="searchInput" placeholder=" Search products.." />
+      <ul>
+        <li><a href="shopping.html"><button class="zoom">Home</button></a></li>
+        <li><a href="shopping.html"><button class="zoom">Products</button></a></li>
+        <li><a href="#contact-section"><button class="zoom">Contact</button></a></li>
+        <li><a href="signup.html"><button class="zoom" id="cartIcon">🛒</button></a></li>
+        
+        
+      </ul>
+    </div>
+  <div class="signup-wrapper">
+    <div class="signup-left">
+      <h2>Looks like you're new here!</h2>
+      <p>Sign up with your email to get started</p>
+      <img src="./logo.png" alt="signup-img" />
+    </div>
+
+    <div class="signup-right">
+      <form onsubmit="handleSignup(event)">
+        <h2>Create account </h2>
+        <input type="text" id="signupName" placeholder="Full Name" required />
+        <input type="email" id="signupEmail" placeholder="Email" required />
+        <input type="text" id="signupPhone" placeholder="Phone number" required/>
+        <input type="text" id="signupUsername" placeholder="Username" required />
+        <input type="password" id="signupPassword" placeholder="Password" required />
+        <input type="password" id="signupConfirm" placeholder="Confirm Password" required />
+        <button type="submit">Continue</button>
+        <p class="Login.link">Already have an account? <a href="login.html">Log in</a></p>
+     </form>
+    </div>
+  </div>
+  </div>
+    <div class="div10" id="contact-section">
+    <h1><i>Contact Us</i></h1>
+    <p style="margin-top: 10px; font-size: 18px;">📞 Phone: 9492451504</p>
+    <p style="margin-bottom: 20px; font-size: 18px;">
+      📧 Email: <a href="mailto:mothukuriomeprakash@gmail.com">mothukuriomeprakash@gmail.com</a>
+    </p>
+    <h2><i>Powered By</i></h2>
+    <div class="logo-strip">
+      <img src="./logo-oppo.png" alt="oppo" />
+      <img src="./logo-paypal.png" alt="paypal" />
+      <img src="./logo-philips.png" alt="philips" />
+      <img src="./play-store.png" alt="play-store" />
+      <img src="./app-store.png" alt="app-store" />
+    </div>
+  </div>
+
+
+  <script>
+    function handleSignup(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("signupName").value.trim();
+      const email = document.getElementById("signupEmail").value.trim();
+      const phone = document.getElementById("signupPhone").value.trim();
+      const username = document.getElementById("signupUsername").value.trim();
+      const password = document.getElementById("signupPassword").value.trim();
+      const confirm = document.getElementById("signupConfirm").value.trim();
+
+      if (!name || !email || !phone || !username || !password || !confirm) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      if (password !== confirm) {
+        alert("Passwords do not match.");
+        return;
+      }
+
+      const user = { name, email, phone, username, password };
+      localStorage.setItem("registeredUser", JSON.stringify(user));
+
+      alert("Signup successful! Redirecting to login...");
+      window.location.href = "login.html";
+    }
+    
+  </script>
+</body>
+ 
+   
+  </script>
+</body>
+</html>
+================================================================
+Signup.CSS code :
+================================================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/* === Background Video === */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* === Optional Dark Overlay over the video === */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);  /* You can increase opacity if needed */
+  z-index: -1;
+}
+
+
+.div1,
+.div2,
+.div3,
+.div4 {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 255, 204, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+}
+
+.div1 {
+  min-height: 100vh;
+  
+  animation: fadeIn 1.2s ease;
+  padding: 30px;
+}
+
+.div2 {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: row;
+  margin-bottom: 50px;
+  padding-right: 100px;
+  margin-left: 30px;
+}
+.div2 ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  margin-left: 80px;
+}
+.div2 ul li a {
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+.div2 ul li a:hover {
+  transform: scale(1.1);
+  color: #007acc;
+  text-shadow: 0 0 10px #fff, 0 0 20px #00f, 0 0 30px #0ff;
+}
+
+#searchInput {
+  padding: 8px 15px 8px 35px;
+  border-radius: 20px;
+  border: 1px solid white;
+  font-size: 16px;
+  width: 220px;
+  height: 38px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: url('https://cdn-icons-png.flaticon.com/512/49/49116.png') no-repeat 10px center;
+  background-size: 18px 18px;
+}
+
+#searchInput:focus {
+  transform: scale(1.1);
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+}
+#searchInput::placeholder{
+  color: white;
+}
+
+
+
+
+.zoom {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.zoom:hover,
+.zoom:active {
+  transform: scale(1.2);
+}
+
+button {
+  border-radius: 20px;
+  width: 90px;
+  height: 40px;
+  color: black;
+  background-color: aquamarine;
+  margin-top: 30px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #00e6ac;
+  box-shadow: 0 0 15px #00e6ac;
+}
+
+.signup-wrapper {
+  display: flex;
+  width: 800px;
+  margin: 50px auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  animation: slideUp 1s ease forwards;
+}
+
+.signup-left {
+  background-color: #2874f0;
+  color: white;
+  width: 40%;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.signup-left img {
+  margin-top: 30px;
+  width: 100%;
+  max-width: 200px;
+  align-self: center;
+}
+
+.signup-left h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.signup-left p {
+  font-size: 14px;
+}
+
+.signup-right {
+  width: 60%;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-right h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signup-right input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.signup-right button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: #fb641b;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+.signup-right button:hover {
+  background-color: #e15c14;
+}
+
+.login-link {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.login-link a {
+  color: #2874f0;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.div10 {
+  color: black;
+  text-align: center;
+  padding: 20px;
+  background-color: rgb(240, 232, 232);
+  animation: slideUp 1.5s ease both;
+}
+
+.logo-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 20px;
+}
+
+.logo-strip img {
+  height: 50px;
+  width: 180px;
+  transition: transform 0.3s ease;
+}
+
+.logo-strip img:hover {
+  transform: scale(1.1);
+}
+
+================================================================
+Login.HTML code :
+
+===============================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=d
+  
+  
+  evice-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css" />
+</head>
+<body>
+  <div class="overlay">
+  <video autoplay muted loop id="bgVideo">
+    <source src="./W16 TV Ad.mp4" type="video/mp4" />
+  </video>
+
+</div>
+   <div class="div1">
+      <img src="./logo-white.png" alt="logo" />
+    <div class="div2">
+      <input type="text" id="searchInput" placeholder=" Search products.." />
+      <ul>
+        <li><a href="shopping.html"><button class="zoom">Home</button></a></li>
+        <li><a href="shopping.html"><button class="zoom">Products</button></a></li>
+        <li><a href="#contact-section"><button class="zoom">Contact</button></a></li>
+        <li><a href="Login.html"><button class="zoom" id="cartIcon">🛒</button></a></li>
+        
+        
+      </ul>
+    </div>
+  <div class="login-wrapper">
+    <div class="login-left">
+      <h2>Welcome Back!</h2>
+      <p>Login with your username and password</p>
+      <img src="./logo.png" alt="login-img" />
+    </div>
+
+    <div class="login-right">
+      <form onsubmit="handleLogin(event)">
+        <h2>Login</h2>
+        <input type="text" id="loginUsername" placeholder="Username" required />
+        <input type="password" id="loginPassword" placeholder="Password" required />
+        <a href="products.html"><button class="zoom" type="submit">Login</button></a>
+
+        <p class="signup.link">New user? <a href="signup.html">Create an account</a></p>
+      </form>
+      
+    </div>
+  </div>
+  </div>
+ <div class="div10" id="contact-section">
+    <h1><i>Contact Us</i></h1>
+    <p style="margin-top: 10px; font-size: 18px;">📞 Phone: 9492451504</p>
+    <p style="margin-bottom: 20px; font-size: 18px;">
+      📧 Email: <a href="mailto:mothukuriomeprakash@gmail.com">mothukuriomeprakash@gmail.com</a>
+    </p>
+    <h2><i>Powered By</i></h2>
+    <div class="logo-strip">
+      <img src="./logo-oppo.png" alt="oppo" />
+      <img src="./logo-paypal.png" alt="paypal" />
+      <img src="./logo-philips.png" alt="philips" />
+      <img src="./play-store.png" alt="play-store" />
+      <img src="./app-store.png" alt="app-store" />
+    </div>
+  </div>
+
+
+  <script>
+
+     function handleLogin(event) {
+      event.preventDefault();
+
+      const username = document.getElementById("loginUsername").value.trim();
+      const password = document.getElementById("loginPassword").value.trim();
+      const registeredUser = JSON.parse(localStorage.getItem("registeredUser"));
+
+      if (!registeredUser || registeredUser.username !== username || registeredUser.password !== password) {
+        alert("Invalid username or password.");
+        return;
+      }
+
+      const loggedInUser = {
+        name: registeredUser.name,
+        email: registeredUser.email,
+        phone: registeredUser.phone,
+        username: registeredUser.username
+      };
+
+      localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+      alert("Login successful!");
+      window.location.href = "products.html";
+    }
+ 
+    
+  </script>
+</body>
+</html>
+</body>
+</html>
+=========================================================================
+Login.CSS code :
+=========================================================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  
+}
+html {
+  scroll-behavior: smooth;
+}
+/* === Background Video === */
+#bgVideo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -2;
+}
+
+/* === Optional Dark Overlay over the video === */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);  /* You can increase opacity if needed */
+  z-index: -1;
+}
+
+
+.div1,
+.div2,
+.div3,
+.div4 {
+  position: relative;
+  z-index: 1;
+}
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+#searchInput::placeholder{
+  color: white;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+
+@keyframes bgSlide {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 255, 204, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+}
+.div1 {
+  min-height: 100vh;
+  animation: fadeIn 1.2s ease;
+  padding: 30px;
+}
+
+.div2 {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  flex-direction: row;
+  margin-bottom: 50px;
+  padding-right: 100px;
+  margin-left: 30px;
+}
+.div2 ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  margin-left: 80px;
+}
+.div2 ul li a {
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+.div2 ul li a:hover {
+  transform: scale(1.1);
+  color: #007acc;
+  text-shadow: 0 0 10px #fff, 0 0 20px #00f, 0 0 30px #0ff;
+}
+
+#searchInput {
+  padding: 8px 15px 8px 35px;
+  border-radius: 20px;
+  border: 1px solid white;
+  font-size: 16px;
+  width: 220px;
+  height: 38px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: url('https://cdn-icons-png.flaticon.com/512/49/49116.png') no-repeat 10px center;
+  background-size: 18px 18px;
+}
+
+#searchInput:focus {
+  transform: scale(1.1);
+  outline: none;
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+}
+
+
+
+
+.zoom {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.zoom:hover,
+.zoom:active {
+  transform: scale(1.2);
+}
+
+button {
+  border-radius: 20px;
+  width: 90px;
+  height: 40px;
+  color: black;
+  background-color: aquamarine;
+  margin-top: 30px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background-color: #00e6ac;
+  box-shadow: 0 0 15px #00e6ac;
+}
+
+.login-wrapper {
+ display: flex;
+  width: 800px;
+  margin: 50px auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #fff;
+  animation: slideUp 1s ease forwards;
+}
+
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.login-left {
+  flex: 1;
+  background-color: #2575fc;
+  color: white;
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-left h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.login-left p {
+  font-size: 15px;
+  margin-bottom: 25px;
+}
+
+.login-left img {
+  width: 300px;
+  height: auto;
+  padding-left: 100px;
+}
+
+.login-right {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.login-right  h2{
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-right form {
+  width: 100%;
+  max-width: 300px;
+}
+
+.login-right h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.login-right input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  transition: border-color 0.3s;
+}
+
+.login-right input:focus {
+  border-color: #2575fc;
+  outline: none;
+  box-shadow: 0 0 5px rgba(37, 117, 252, 0.4);
+}
+
+.login-right button {
+  width: 100%;
+  padding: 10px;
+  background-color: #2575fc;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-right button:hover {
+  background-color: #1b5bcc;
+  transform: scale(1.03);
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.signup-link a {
+  color: #2575fc;
+  text-decoration: none;
+}
+
+.signup-link a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .login-wrapper {
+    flex-direction: column;
+  }
+
+  .login-left,
+  .login-right {
+    width: 100%;
+    padding: 30px;
+  }
+
+  .login-left img {
+    width: 150px;
+  }
+}
+.terms-line {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  margin-bottom: 15px;
+  line-height: 1.4;
+  flex-wrap: nowrap;
+}
+.div10 {
+  color: black;
+  text-align: center;
+  padding: 20px;
+  background-color: rgb(240, 232, 232);
+  animation: slideUp 1.5s ease both;
+  
+}
+
+.logo-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 20px;
+}
+
+.logo-strip img {
+  height: 50px;
+  width: 180px;
+  transition: transform 0.3s ease;
+}
+
+.logo-strip img:hover {
+  transform: scale(1.1);
+}
+
+
+
+
+=============================================================
+Account.HTML code :
+==============================================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Account | Your Profile</title>
+  <link rel="stylesheet" href="account.css" />
+</head>
+<body>
+  <header class="div1">
+    <img src="./logo-white.png" alt="logo" class="logo" />
+    <div class="div2">
+      <input type="text" id="searchInput" placeholder="Search products..." />
+      <ul>
+        <li><a href="products.html"><button class="zoom">Home</button></a></li>
+        <li><a href="products.html"><button class="zoom">Products</button></a></li>
+        <li><a href="#contact-section"><button class="zoom">Contact</button></a></li>
+        <li><a href="cart.html"><button class="zoom" id="cartIcon">🛒</button></a></li>
+        <li>
+          <a href="shopping.html">
+            <button class="zoom pulse-button" id="logoutBtn">Logout</button>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main class="account-page">
+    <aside class="sidebar">
+      <h2>Account</h2>
+      <p id="userNameSidebar">Ome Prakash</p>
+      <nav>
+        <ul>
+          <li>Overview</li>
+          <li>Orders & Returns</li>
+          <li>Coupons</li>
+          <li>Profile</li>
+        </ul>
+      </nav>
+    </aside>
+
+    <section class="account-details">
+      <h3>Edit Details</h3>
+      <div class="detail-box" id="accountDetails"></div>
+      <a href="products.html"><button class="back-btn">Back to Home</button></a>
+    </section>
+    <section class="purchase-history">
+      <h3>Purchase History</h3>
+      <div id="historyContainer">
+        <!-- Purchase data will be shown here -->
+      </div>
+    </section>
+  </main>
+  <div class="div10" id="contact-section">
+  <h1><i>Contact Us</i></h1>
+  <p>📞 Phone: 9492451504</p>
+  <p>📧 Email: <a href="mailto:mothukuriomeprakash@gmail.com">mothukuriomeprakash@gmail.com</a></p>
+  <h2><i>Powered By</i></h2>
+    <div class="logo-strip">
+      <img src="./logo-oppo.png" alt="oppo" />
+      <img src="./logo-paypal.png" alt="paypal" />
+      <img src="./logo-philips.png" alt="philips" />
+      <img src="./play-store.png" alt="play-store" />
+      <img src="./app-store.png" alt="app-store" />
+    </div>
+  </div>
+</div>
+
+  <script>
+    const user = JSON.parse(localStorage.getItem("loggedInUser"));
+    const container = document.getElementById("accountDetails");
+    const userNameSidebar = document.getElementById("userNameSidebar");
+
+    if (user) {
+      container.innerHTML = `
+        <label>Mobile Number</label>
+        <input type="text" value="${user.phone}" readonly />
+
+        <label>Full Name</label>
+        <input type="text" value="${user.name}" readonly />
+
+        <label>Email</label>
+        <input type="text" value="${user.email}" readonly />
+
+        <label>Username</label>
+        <input type="text" value="${user.username}" readonly />
+      `;
+      userNameSidebar.textContent = user.name.toLowerCase();
+    } else {
+      container.innerHTML = "<p>No user logged in.</p>";
+    }
+    // ✅ Load purchase history from localStorage
+    function loadPurchaseHistory() {
+      const historyContainer = document.getElementById("historyContainer");
+      const user = JSON.parse(localStorage.getItem("loggedInUser"));
+      const key = `orderHistory_${user.username}`;
+      const orders = JSON.parse(localStorage.getItem(key)) || [];
+
+
+      if (orders.length === 0) {
+        historyContainer.innerHTML = "<p>No purchase history available.</p>";
+        return;
+      }
+
+      orders.forEach(order => {
+        const item = document.createElement("div");
+        item.classList.add("history-item");
+        item.innerHTML = `
+          <strong>${order.name}</strong> - ₹${order.price} <br>
+          <small>Purchased on: ${order.date}</small>
+          <hr>
+        `;
+        historyContainer.appendChild(item);
+      });
+    }
+
+    loadPurchaseHistory();
+  </script>
+</body>
+</html>
+
+========================================================================
+Account.CSS code :
+========================================================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f5f5f5;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.div1 {
+  background-color: rgb(226, 195, 158);
+  /* background: radial-gradient(#e69464, #91c6e5); */
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  height: 50px;
+}
+
+.div2 {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.div2 ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+}
+.div2 ul li a {
+  font-size: 20px;
+  text-decoration: none;
+  margin-left: 40px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+  color: black;
+  
+}
+.div2 ul li a:hover {
+  transform: scale(1.1);
+   color: #007acc;
+  text-shadow: 0 0 10px #fff, 0 0 20px #00f, 0 0 30px #0ff;
+}
+
+.zoom {
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: 2px solid black;
+  background-color: aquamarine;
+  color: rgb(0, 0, 0);
+  
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.zoom:hover,
+.zoom:active {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px #0ad8a4, 0 0 25px #08cccc;
+  background-color: #00e6ac;
+
+
+}
+
+
+#searchInput {
+  padding: 8px 15px 8px 35px;
+  border-radius: 20px;
+  border: 1px solid #000;
+  font-size: 14px;
+  width: 220px;
+  height: 36px;
+  background: url('https://cdn-icons-png.flaticon.com/512/49/49116.png') no-repeat 10px center;
+  background-size: 18px 18px;
+}
+
+#searchInput:focus {
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 255, 204, 0.6);
+}
+
+/* Account Section */
+.account-page {
+  display: flex;
+  margin: 40px;
+}
+
+.sidebar {
+  flex: 1;
+  background: #fff;
+  padding: 30px;
+  margin-right: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  min-width: 200px;
+}
+
+.sidebar h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #2d3436;
+}
+
+.sidebar p {
+  font-size: 16px;
+  color: #636e72;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  line-height: 2.5;
+  color: #2d3436;
+  font-weight: 500;
+  padding-left: 0;
+}
+
+/* Details */
+.account-details {
+  flex: 3;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+}
+
+.account-details h3 {
+  font-size: 22px;
+  color: #2d3436;
+  margin-bottom: 25px;
+}
+
+.detail-box {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.detail-box label {
+  font-size: 15px;
+  color: #032835;
+  font-weight: bold;
+}
+
+.detail-box input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  font-size: 16px;
+}
+
+/* Back Button */
+.back-btn {
+  margin-top: 30px;
+  padding: 12px 24px;
+  background-color: #0984e3;
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+  background: #74b9ff;
+}
+.zoom {
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zoom:hover,
+.zoom:active {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+}
+
+
+.back-btn {
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+  background-color: #00cec9;
+  box-shadow: 0 0 12px rgba(0, 255, 204, 0.6);
+}
+
+.pulse-button {
+  animation: pulse 2s infinite;
+}
+
+.zoom {
+  display: inline-block;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.zoom:hover,
+.zoom:active {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+}
+
+
+
+
+.pulse-button {
+  animation: pulse 2s infinite;
+}
+#searchInput {
+  padding: 8px 15px 8px 35px;
+  border-radius: 20px;
+  border: 1px solid #080808;
+  font-size: 16px;
+  width: 220px;
+  height: 38px;
+  transition: all 0.3s ease;
+  background: url('https://cdn-icons-png.flaticon.com/512/49/49116.png') no-repeat 10px center;
+  background-size: 18px 18px;
+}
+
+#searchInput:focus {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 255, 204, 0.6);
+  outline: none;
+}
+.div10 {
+  color: black;
+  text-align: center;
+  height: auto;
+  padding: 20px;
+  background-color: rgb(240, 232, 232);
+  animation: fadeIn 1.2s ease-in;
+
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink {
+  50% { border-color: transparent }
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0.7); }
+  70% { box-shadow: 0 0 0 15px rgba(0, 255, 204, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 255, 204, 0); }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.logo-strip {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 20px;
+}
+
+.logo-strip img {
+  height: 50px;
+  width: 180px;
+  transition: transform 0.3s ease;
+}
+
+.logo-strip img:hover {
+  transform: scale(1.1);
+}
+/* Purchase History Section */
+.purchase-history {
+  flex: 3;
+  margin: 40px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  animation: slideUp 1s ease-in-out;
+}
+
+.purchase-history h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  color: #2d3436;
+}
+
+.history-item {
+  background-color: #f1f1f1;
+  padding: 12px 20px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  color: #2d3436;
+}

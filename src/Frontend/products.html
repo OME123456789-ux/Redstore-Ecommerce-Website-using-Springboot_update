@@ -1,0 +1,1605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RedStore - Products</title>
+  <link rel="stylesheet" href="products.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+
+    <div class="header-main">
+      <div class="container">
+        <div class="logo">
+          <a href="shopping.html">
+            <img src="../../assests/logo-white.png" alt="RedStore">
+          </a>
+        </div>
+        
+        <div class="search-container">
+          <div class="search-box">
+            <select class="category-select">
+              <option value="all">All Categories</option>
+              <option value="electronics">Electronics</option>
+              <option value="fashion">Fashion</option>
+              <option value="home">Home & Living</option>
+              <option value="beauty">Beauty</option>
+            </select>
+            <input type="text" id="searchInput" placeholder="Search for products, brands and more...">
+            <button class="search-btn">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+          <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+
+        <div class="header-actions">
+          <div class="auth-buttons" id="authButtons">
+            <a href="Login.html" class="auth-btn login-btn">
+              <i class="fas fa-sign-in-alt"></i>
+              <span>Login</span>
+            </a>
+            <a href="signup.html" class="auth-btn signup-btn">
+              <i class="fas fa-user-plus"></i>
+              <span>Sign Up</span>
+            </a>
+          </div>
+          
+          <div class="user-menu" id="userMenu" style="display: none;">
+            <button class="user-btn" id="userBtn">
+              <i class="fas fa-user"></i>
+              <span id="userName">Account</span>
+            </button>
+            <div class="user-dropdown" id="userDropdown">
+              <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span id="userWelcome">Welcome to RedStore</span>
+              </div>
+              <a href="Account.html" class="dropdown-item"><i class="fas fa-user"></i> My Account</a>
+              <a href="#" class="dropdown-item"><i class="fas fa-heart"></i> Wishlist</a>
+              <a href="Account.html" class="dropdown-item"><i class="fas fa-box"></i> Orders</a>
+              <a href="#" class="dropdown-item" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+          </div>
+
+          <a href="cart.html" class="cart-btn" id="cartBtn">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Cart</span>
+            <span class="cart-count" id="cartCount">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <div class="container">
+        <div class="nav-left">
+          <div class="category-menu">
+            <button class="category-btn" id="categoryBtn">
+              <i class="fas fa-bars"></i>
+              <span>All Categories</span>
+            </button>
+            <div class="mega-menu" id="megaMenu">
+              <div class="mega-menu-content">
+                <div class="menu-column">
+                  <h4>Electronics</h4>
+                  <ul>
+                    <li><a href="#" data-category="electronics">Smartphones</a></li>
+                    <li><a href="#" data-category="electronics">Laptops</a></li>
+                    <li><a href="#" data-category="electronics">Headphones</a></li>
+                    <li><a href="#" data-category="electronics">Smartwatches</a></li>
+                  </ul>
+                </div>
+                <div class="menu-column">
+                  <h4>Fashion</h4>
+                  <ul>
+                    <li><a href="#" data-category="fashion">Men's Clothing</a></li>
+                    <li><a href="#" data-category="fashion">Women's Clothing</a></li>
+                    <li><a href="#" data-category="fashion">Footwear</a></li>
+                    <li><a href="#" data-category="fashion">Accessories</a></li>
+                  </ul>
+                </div>
+                <div class="menu-column">
+                  <h4>Home & Living</h4>
+                  <ul>
+                    <li><a href="#" data-category="home">Furniture</a></li>
+                    <li><a href="#" data-category="home">Kitchen</a></li>
+                    <li><a href="#" data-category="home">Decor</a></li>
+                    <li><a href="#" data-category="home">Appliances</a></li>
+                  </ul>
+                </div>
+                <div class="menu-column">
+                  <h4>Beauty</h4>
+                  <ul>
+                    <li><a href="#" data-category="beauty">Skincare</a></li>
+                    <li><a href="#" data-category="beauty">Makeup</a></li>
+                    <li><a href="#" data-category="beauty">Hair Care</a></li>
+                    <li><a href="#" data-category="beauty">Fragrances</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <ul class="nav-links">
+            <li><a href="shopping.html">Home</a></li>
+            <li><a href="#" class="active">Products</a></li>
+            <li><a href="#">Deals</a></li>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Brands</a></li>
+          </ul>
+        </div>
+        
+        <div class="nav-right">
+          <div class="location-selector">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Deliver to: Address</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="container">
+      <!-- Filters Sidebar -->
+      <aside class="filters-sidebar">
+        <div class="filter-section">
+          <h3>Categories</h3>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" value="electronics" checked>
+              <span>Electronics</span>
+              <span class="count">(24)</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="fashion" checked>
+              <span>Fashion</span>
+              <span class="count">(18)</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="home" checked>
+              <span>Home & Living</span>
+              <span class="count">(15)</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="beauty" checked>
+              <span>Beauty</span>
+              <span class="count">(12)</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3>Price Range</h3>
+          <div class="price-range">
+            <input type="range" id="priceRange" min="0" max="100000" value="100000">
+            <div class="price-inputs">
+              <input type="number" id="minPrice" placeholder="Min" value="0">
+              <span>-</span>
+              <input type="number" id="maxPrice" placeholder="Max" value="100000">
+            </div>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3>Brands</h3>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" value="apple">
+              <span>Apple</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="samsung">
+              <span>Samsung</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="nike">
+              <span>Nike</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="adidas">
+              <span>Adidas</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="sony">
+              <span>Sony</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="filter-section">
+          <h3>Rating</h3>
+          <div class="filter-options">
+            <label class="filter-option">
+              <input type="checkbox" value="4">
+              <span>4★ & above</span>
+            </label>
+            <label class="filter-option">
+              <input type="checkbox" value="3">
+              <span>3★ & above</span>
+            </label>
+          </div>
+        </div>
+
+        <button class="clear-filters">Clear All Filters</button>
+      </aside>
+
+      <!-- Products Section -->
+      <section class="products-section">
+        <div class="products-header">
+          <div class="results-info">
+            <h2>All Products</h2>
+            <p><span id="productCount">23</span> products found</p>
+          </div>
+          
+          <div class="sort-options">
+            <label for="sortSelect">Sort by:</label>
+            <select id="sortSelect">
+              <option value="relevance">Relevance</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Customer Rating</option>
+              <option value="newest">Newest First</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="products-grid" id="productsGrid">
+          <!-- Electronics Products -->
+          <div class="product-card" data-category="electronics" data-price="15999" data-rating="4.5" data-brand="apple">
+            <div class="product-image">
+              <img src="../../assests/Iphone.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+              <h3>iPhone 15 Pro</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>(4.5)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹1,59,999</span>
+                <span class="original-price">₹1,79,999</span>
+                <span class="discount">11% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">A17 Pro Chip</span>
+                <span class="feature">48MP Camera</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('iPhone 15 Pro', 159999, '../../assests/Iphone.jpeg', 'Latest iPhone with A17 Pro chip')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="electronics" data-price="89999" data-rating="4.3" data-brand="apple">
+            <div class="product-image">
+              <img src="../../assests/MacBook Air M2.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">Best Seller</div>
+            </div>
+            <div class="product-info">
+              <h3>MacBook Air M2</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span>(4.3)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹89,999</span>
+                <span class="original-price">₹99,999</span>
+                <span class="discount">10% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">M2 Chip</span>
+                <span class="feature">13.6" Display</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('MacBook Air M2', 89999, '../../assests/MacBook Air M2.jpeg', 'Powerful laptop with M2 chip')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="electronics" data-price="15999" data-rating="4.2" data-brand="samsung">
+            <div class="product-image">
+              <img src="../../assests/Samsung Galaxy S24.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>Samsung Galaxy S24</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span>(4.2)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹15,999</span>
+                <span class="original-price">₹18,999</span>
+                <span class="discount">16% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">AI Features</span>
+                <span class="feature">200MP Camera</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Samsung Galaxy S24', 15999, '../../assests/Samsung Galaxy S24.jpeg', 'Latest Samsung with AI features')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Fashion Products -->
+          <div class="product-card" data-category="fashion" data-price="2999" data-rating="4.4" data-brand="nike">
+            <div class="product-image">
+              <img src="../../assests/Nike Air Max 270.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">Trending</div>
+            </div>
+            <div class="product-info">
+              <h3>Nike Air Max 270</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span>(4.4)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹2,999</span>
+                <span class="original-price">₹4,999</span>
+                <span class="discount">40% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Air Max</span>
+                <span class="feature">Comfortable</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Nike Air Max 270', 2999, '../../assests/Nike Air Max 270.jpeg', 'Comfortable Nike Air Max shoes')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="fashion" data-price="1499" data-rating="4.1" data-brand="adidas">
+            <div class="product-image">
+              <img src="../../assests/Adidas Originals T-Shirt.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>Adidas Originals T-Shirt</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span>(4.1)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹1,499</span>
+                <span class="original-price">₹2,499</span>
+                <span class="discount">40% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Cotton</span>
+                <span class="feature">Classic Fit</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Adidas Originals T-Shirt', 1499, '../../assests/Adidas Originals T-Shirt.jpeg', 'Classic Adidas cotton t-shirt')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Home & Living Products -->
+          <div class="product-card" data-category="home" data-price="8999" data-rating="4.6" data-brand="ikea">
+            <div class="product-image">
+              <img src="../../assests/Modern 3-Seater Sofa.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">Popular</div>
+            </div>
+            <div class="product-info">
+              <h3>Modern 3-Seater Sofa</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span>(4.6)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹8,999</span>
+                <span class="original-price">₹12,999</span>
+                <span class="discount">31% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">3-Seater</span>
+                <span class="feature">Premium Fabric</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Modern 3-Seater Sofa', 8999, '../../assests/Modern 3-Seater Sofa.jpeg', 'Comfortable modern sofa for your living room')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Beauty Products -->
+          <div class="product-card" data-category="beauty" data-price="2499" data-rating="4.7" data-brand="loreal">
+            <div class="product-image">
+              <img src="../../assests/Oreal Paris Skincare Set.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">Bestseller</div>
+            </div>
+            <div class="product-info">
+              <h3>L\'Oreal Paris Skincare Set</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span>(4.7)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹2,499</span>
+                <span class="original-price">₹3,999</span>
+                <span class="discount">38% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Anti-Aging</span>
+                <span class="feature">Complete Set</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('L\'Oreal Paris Skincare Set', 2499, '../../assests/Oreal Paris Skincare Set.jpeg', 'Complete skincare set for glowing skin')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Additional Electronics Products -->
+          <div class="product-card" data-category="electronics" data-price="29999" data-rating="4.8" data-brand="sony">
+            <div class="product-image">
+              <img src="../../assests/Sony WH-1000XM4 Headphones.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">Premium</div>
+            </div>
+            <div class="product-info">
+              <h3>Sony WH-1000XM4 Headphones</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span>(4.8)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹29,999</span>
+                <span class="original-price">₹35,999</span>
+                <span class="discount">17% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Noise Cancelling</span>
+                <span class="feature">30hr Battery</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Sony WH-1000XM4 Headphones', 29999, '../../assests/Sony WH-1000XM4 Headphones.jpeg', 'Premium noise cancelling headphones')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="electronics" data-price="12999" data-rating="4.3" data-brand="samsung">
+            <div class="product-image">
+              <img src="../../assests/Samsung Galaxy Watch 6.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>Samsung Galaxy Watch 6</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span>(4.3)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹12,999</span>
+                <span class="original-price">₹16,999</span>
+                <span class="discount">24% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Health Tracking</span>
+                <span class="feature">5ATM Waterproof</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Samsung Galaxy Watch 6', 12999, '../../assests/Samsung Galaxy Watch 6.jpeg', 'Smart fitness watch with health tracking')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Additional Fashion Products -->
+          <div class="product-card" data-category="fashion" data-price="3999" data-rating="4.5" data-brand="levis">
+            <div class="product-image">
+              <img src="../../assests/Levis 501 Original Jeans.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">Trending</div>
+            </div>
+            <div class="product-info">
+              <h3>Levis 501 Original Jeans</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>(4.5)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹3,999</span>
+                <span class="original-price">₹5,999</span>
+                <span class="discount">33% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Classic Fit</span>
+                <span class="feature">100% Cotton</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Levis 501 Original Jeans', 3999, '../../assests/Levis 501 Original Jeans.jpeg', 'Classic fit denim jeans')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="fashion" data-price="899" data-rating="4.2" data-brand="zara">
+            <div class="product-image">
+              <img src="../../assests/zara t shirt.jpeg" alt="Zara T-Shirt">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>Zara Cotton T-Shirt</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span>(4.2)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹899</span>
+                <span class="original-price">₹1,299</span>
+                <span class="discount">31% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Premium Cotton</span>
+                <span class="feature">Slim Fit</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Zara Cotton T-Shirt', 899, '../../assests/zara t shirt.jpeg', 'Premium cotton t-shirt')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Additional Home & Living Products -->
+          <div class="product-card" data-category="home" data-price="5999" data-rating="4.4" data-brand="ikea">
+            <div class="product-image">
+              <img src="../../assests/IKEA LED Table Lamp.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>IKEA LED Table Lamp</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span>(4.4)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹5,999</span>
+                <span class="original-price">₹7,999</span>
+                <span class="discount">25% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">LED Technology</span>
+                <span class="feature">Adjustable</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('IKEA LED Table Lamp', 5999, '../../assests/IKEA LED Table Lamp.jpeg', 'Modern LED table lamp')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="home" data-price="14999" data-rating="4.6" data-brand="philips">
+            <div class="product-image">
+              <img src="../../assests/Philips Air Purifier.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">Best Seller</div>
+            </div>
+            <div class="product-info">
+              <h3>Philips Air Purifier</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span>(4.6)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹14,999</span>
+                <span class="original-price">₹19,999</span>
+                <span class="discount">25% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">HEPA Filter</span>
+                <span class="feature">Smart Control</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Philips Air Purifier', 14999, '../../assests/Philips Air Purifier.jpeg', 'Advanced air purification system')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- Additional Beauty Products -->
+          <div class="product-card" data-category="beauty" data-price="1899" data-rating="4.4" data-brand="maybelline">
+            <div class="product-image">
+              <img src="../../assests/Maybelline Makeup Kit.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>Maybelline Makeup Kit</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span>(4.4)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹1,899</span>
+                <span class="original-price">₹2,999</span>
+                <span class="discount">37% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Complete Kit</span>
+                <span class="feature">Long Lasting</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Maybelline Makeup Kit', 1899, '../../assests/Maybelline Makeup Kit.jpeg', 'Complete makeup kit for everyday use')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="beauty" data-price="3299" data-rating="4.8" data-brand="lakme">
+            <div class="product-image">
+              <img src="../../assests/Lakme Hair Care Set.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+              <h3>Lakme Hair Care Set</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span>(4.8)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹3,299</span>
+                <span class="original-price">₹4,999</span>
+                <span class="discount">34% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Natural Ingredients</span>
+                <span class="feature">Complete Care</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Lakme Hair Care Set', 3299, '../../assests/Lakme Hair Care Set.jpeg', 'Complete hair care with natural ingredients')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- More Electronics Products -->
+          <div class="product-card" data-category="electronics" data-price="45999" data-rating="4.9" data-brand="apple">
+            <div class="product-image">
+              <img src="../../assests/iPad Pro.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">Premium</div>
+            </div>
+            <div class="product-info">
+              <h3>iPad Pro 12.9" (M2)</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span>(4.9)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹45,999</span>
+                <span class="original-price">₹52,999</span>
+                <span class="discount">13% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">M2 Chip</span>
+                <span class="feature">12.9" Display</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('iPad Pro 12.9 (M2)', 45999, '../../assests/iPad Pro.jpeg', 'Professional iPad with M2 chip')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="electronics" data-price="8999" data-rating="4.2" data-brand="jbl">
+            <div class="product-image">
+              <img src="../../assests/JBL Flip 6 Portable Speaker.jpeg" alt="JBL Speaker">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>JBL Flip 6 Portable Speaker</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span>(4.2)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹8,999</span>
+                <span class="original-price">₹11,999</span>
+                <span class="discount">25% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Waterproof</span>
+                <span class="feature">12hr Battery</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('JBL Flip 6 Portable Speaker', 8999, '../../assests/JBL Flip 6 Portable Speaker.jpeg', 'Portable waterproof speaker')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- More Fashion Products -->
+          <div class="product-card" data-category="fashion" data-price="5999" data-rating="4.6" data-brand="redtape">
+            <div class="product-image">
+              <img src="../../assests/redtape shoes" alt="Red Tape Shoes">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">Trending</div>
+            </div>
+            <div class="product-info">
+              <h3>Red Tape Casual Shoes</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span>(4.6)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹5,999</span>
+                <span class="original-price">₹7,999</span>
+                <span class="discount">25% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Comfortable</span>
+                <span class="feature">Stylish Design</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Red Tape Casual Shoes', 5999, '../../assests/redtape shoes', 'Comfortable casual shoes')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="fashion" data-price="2499" data-rating="4.3" data-brand="wrogn">
+            <div class="product-image">
+              <img src="../../assests/WROGN Formal Shirt.jpeg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">Trending</div>
+            </div>
+            <div class="product-info">
+              <h3>WROGN Formal Shirt</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span>(4.3)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹2,499</span>
+                <span class="original-price">₹3,999</span>
+                <span class="discount">38% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Formal</span>
+                <span class="feature">Premium Cotton</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('WROGN Formal Shirt', 2499, '../../assests/WROGN Formal Shirt.jpeg', 'Stylish formal shirt')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="home" data-price="7999" data-rating="4.5" data-brand="philips">
+            <div class="product-image">
+              <img src="../../assests/product-2.jpg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">Best Seller</div>
+            </div>
+            <div class="product-info">
+              <h3>Philips Coffee Maker</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+                <span>(4.5)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹7,999</span>
+                <span class="original-price">₹9,999</span>
+                <span class="discount">20% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Programmable</span>
+                <span class="feature">Auto Shut-off</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Philips Coffee Maker', 7999, '../../assests/product-2.jpg', 'Programmable coffee maker')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="home" data-price="3999" data-rating="4.1" data-brand="ikea">
+            <div class="product-image">
+              <img src="../../assests/product-3.jpg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>IKEA Storage Unit</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span>(4.1)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹3,999</span>
+                <span class="original-price">₹5,999</span>
+                <span class="discount">33% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Multi-purpose</span>
+                <span class="feature">Easy Assembly</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('IKEA Storage Unit', 3999, '../../assests/product-3.jpg', 'Versatile storage solution')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- More Beauty Products -->
+          <div class="product-card" data-category="beauty" data-price="1599" data-rating="4.7" data-brand="nykaa">
+            <div class="product-image">
+              <img src="../../assests/product-4.jpg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+              <div class="product-badge">New</div>
+            </div>
+            <div class="product-info">
+              <h3>Nykaa Lipstick Set</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+                <span>(4.7)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹1,599</span>
+                <span class="original-price">₹2,999</span>
+                <span class="discount">47% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Long-lasting</span>
+                <span class="feature">Set of 5</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Nykaa Lipstick Set', 1599, '../../assests/product-4.jpg', 'Set of 5 long-lasting lipsticks')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <div class="product-card" data-category="beauty" data-price="2799" data-rating="4.4" data-brand="garnier">
+            <div class="product-image">
+              <img src="../../assests/product-5.jpg">
+              <div class="product-overlay">
+                <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+                <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+              </div>
+            </div>
+            <div class="product-info">
+              <h3>Garnier Skin Naturals</h3>
+              <div class="product-rating">
+                <div class="stars">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="far fa-star"></i>
+                </div>
+                <span>(4.4)</span>
+              </div>
+              <div class="product-price">
+                <span class="current-price">₹2,799</span>
+                <span class="original-price">₹3,999</span>
+                <span class="discount">30% off</span>
+              </div>
+              <div class="product-features">
+                <span class="feature">Natural</span>
+                <span class="feature">Complete Set</span>
+              </div>
+              <button class="add-to-cart-btn" onclick="addToCart('Garnier Skin Naturals', 2799, '../../assests/product-5.jpg', 'Natural skincare collection')">
+                <i class="fas fa-shopping-cart"></i>
+                Add to Cart
+              </button>
+            </div>
+          </div>
+
+          <!-- More products will be added dynamically -->
+        </div>
+
+        <!-- Load More Button -->
+        <div class="load-more">
+          <button class="load-more-btn" id="loadMoreBtn">
+            <i class="fas fa-sync-alt"></i>
+            Load More Products
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Chatbot -->
+  <div class="chatbot-icon" id="chatToggle">
+    <i class="fas fa-comments"></i>
+  </div>
+  
+  <div class="chat-container hidden" id="chatContainer">
+    <div class="chat-header">
+      <i class="fas fa-robot"></i>
+      <span>AI Shopping Assistant</span>
+      <button class="close-chat" id="closeChat">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="chat-log" id="chatLog">
+      <div class="chat-message bot">
+        <i class="fas fa-robot"></i>
+        <div class="message-content">
+          Hi! I'm your AI shopping assistant. How can I help you find the perfect products today?
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <textarea id="userInput" placeholder="Type your message..."></textarea>
+      <button onclick="sendMessage()">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>About RedStore</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press & Media</a></li>
+          <li><a href="#">RedStore Science</a></li>
+          <li><a href="#">Investor Relations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Connect With Us</h3>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+        <div class="contact-info">
+          <p><i class="fas fa-phone"></i> 9492451504</p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:mothukuriomeprakash@gmail.com">mothukuriomeprakash@gmail.com</a></p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Make Money With Us</h3>
+        <ul>
+          <li><a href="#">Sell on RedStore</a></li>
+          <li><a href="#">Become an Affiliate</a></li>
+          <li><a href="#">Advertise Your Products</a></li>
+          <li><a href="#">RedStore Pay</a></li>
+          <li><a href="#">RedStore Business</a></li>
+          <li><a href="#">RedStore Fresh</a></li>
+          <li><a href="#">RedStore Prime</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Let Us Help You</h3>
+        <ul>
+          <li><a href="#">Your Account</a></li>
+          <li><a href="#">Returns Centre</a></li>
+          <li><a href="#">100% Purchase Protection</a></li>
+          <li><a href="#">RedStore App Download</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Customer Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-separator"></div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <div class="footer-logo">
+          <span class="logo-text">RedStore</span>
+        </div>
+        <div class="footer-language">
+          <select class="language-select">
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Telugu</option>
+            <option>Tamil</option>
+          </select>
+          <span class="country">India</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">Conditions of Use & Sale</a>
+        <a href="#">Privacy Notice</a>
+        <a href="#">Interest-Based Ads</a>
+        <a href="#">Cookie Preferences</a>
+        <span class="copyright">© 2025 RedStore.com, Inc. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Enhanced Local Storage Management
+    const STORAGE_KEYS = {
+      CART: 'shopHub_cart',
+      USER: 'shopHub_user',
+      AUTH: 'shopHub_auth',
+      WISHLIST: 'shopHub_wishlist',
+      RECENT_VIEWS: 'shopHub_recent_views',
+      SETTINGS: 'shopHub_settings'
+    };
+
+    // No browser localStorage used on this page
+    const LocalStorage = { get: () => null, set: () => false, remove: () => false };
+
+    // Authentication Functions
+    const API_BASE = 'http://localhost:8080/api';
+    function getCookie(name) {
+      const cname = name + '=';
+      const ca = decodeURIComponent(document.cookie).split(';');
+      for (let i=0;i<ca.length;i++){ let c=ca[i].trim(); if (c.indexOf(cname)===0) return c.substring(cname.length); }
+      return '';
+    }
+
+    function getAuthUsername() {
+      try {
+        const fromStorage = localStorage.getItem('auth_username');
+        if (fromStorage) return fromStorage;
+      } catch (_) {}
+      return getCookie('auth_username');
+    }
+
+    function getAuthName() {
+      try {
+        const fromStorage = localStorage.getItem('auth_name');
+        if (fromStorage) return fromStorage;
+      } catch (_) {}
+      return getCookie('auth_name') || getAuthUsername();
+    }
+
+    function checkAuthStatus() {
+      const username = getAuthUsername();
+      const authButtons = document.getElementById('authButtons');
+      const userMenu = document.getElementById('userMenu');
+      const userNameSpan = document.getElementById('userName');
+      const userWelcome = document.getElementById('userWelcome');
+      if (username) {
+        const displayName = getAuthName();
+        authButtons.style.display = 'none';
+        userMenu.style.display = 'block';
+        userNameSpan.textContent = displayName;
+        userWelcome.textContent = `Welcome, ${displayName}`;
+      }
+      else { authButtons.style.display = 'flex'; userMenu.style.display = 'none'; }
+    }
+
+    function logout() {
+      document.cookie = 'auth_username=; Max-Age=0; path=/';
+      document.cookie = 'auth_name=; Max-Age=0; path=/';
+      try {
+        localStorage.removeItem('auth_username');
+        localStorage.removeItem('auth_name');
+      } catch (_) {}
+      showNotification('You have been logged out successfully!');
+      setTimeout(() => { window.location.href = 'shopping.html'; }, 800);
+    }
+
+    // Enhanced Cart Management
+    async function fetchCart() {
+      const username = getAuthUsername();
+      if (!username) return [];
+      const res = await fetch(`${API_BASE}/cart/${encodeURIComponent(username)}`);
+      return res.ok ? await res.json() : [];
+    }
+
+    async function addToCart(name, price, image, description) {
+      const username = getAuthUsername();
+      if (!username) { showNotification('Please login to add items to cart'); return; }
+      
+      // Get user's full name from cookie or use username as fallback
+      const fullName = getAuthName() || username;
+      
+      await fetch(`${API_BASE}/cart`, {
+        method: 'POST', 
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          username, 
+          fullName: fullName,
+          name, 
+          price: Number(price), 
+          imageUrl: image, 
+          description, 
+          quantity: 1 
+        })
+      });
+      await updateCartDisplay();
+      showNotification(`${name} added to cart!`);
+      addToRecentViews(name, price, image);
+    }
+
+    async function updateCartDisplay() {
+      const cart = await fetchCart();
+      const cartCount = document.getElementById('cartCount');
+      const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCount.textContent = totalItems;
+    }
+
+    // Recent Views Management
+    let recentViewsCache = [];
+    function getRecentViews() { return recentViewsCache; }
+
+    function addToRecentViews(productName, price, imageUrl) {
+      const recentViews = getRecentViews();
+      const existingIndex = recentViews.findIndex(item => item.name === productName);
+      
+      if (existingIndex !== -1) {
+        recentViews.splice(existingIndex, 1);
+      }
+      
+      recentViews.unshift({
+        name: productName,
+        price: price,
+        image: imageUrl,
+        viewedAt: new Date().toISOString()
+      });
+      
+      // Keep only last 10 items
+      if (recentViews.length > 10) {
+        recentViews.splice(10);
+      }
+      
+      recentViewsCache = recentViews;
+    }
+
+    // Search functionality
+    const searchInput = document.getElementById('searchInput');
+    const searchSuggestions = document.getElementById('searchSuggestions');
+
+    searchInput.addEventListener('input', function() {
+      const query = this.value.toLowerCase();
+      if (query.length > 2) {
+        const suggestions = [
+          'iPhone 15 Pro',
+          'MacBook Air M2',
+          'Samsung Galaxy S24',
+          'Nike Air Max 270',
+          'Adidas T-Shirt',
+          'Modern Sofa',
+          'L\'Oreal Skincare'
+        ].filter(item => item.toLowerCase().includes(query));
+        
+        showSearchSuggestions(suggestions);
+      } else {
+        searchSuggestions.style.display = 'none';
+      }
+    });
+
+    function showSearchSuggestions(suggestions) {
+      if (suggestions.length > 0) {
+        searchSuggestions.innerHTML = suggestions.map(suggestion => 
+          `<div class="suggestion-item">${suggestion}</div>`
+        ).join('');
+        searchSuggestions.style.display = 'block';
+      } else {
+        searchSuggestions.style.display = 'none';
+      }
+    }
+
+    // Filter functionality
+    function filterProducts() {
+      const selectedCategories = Array.from(document.querySelectorAll('.filter-option input:checked'))
+        .map(input => input.value);
+      
+      const minPrice = parseInt(document.getElementById('minPrice').value) || 0;
+      const maxPrice = parseInt(document.getElementById('maxPrice').value) || 100000;
+      
+      const products = document.querySelectorAll('.product-card');
+      let visibleCount = 0;
+      
+      products.forEach(product => {
+        const category = product.dataset.category;
+        const price = parseInt(product.dataset.price);
+        
+        // Show all products if no categories are selected, otherwise filter by selected categories
+        const categoryMatch = selectedCategories.length === 0 || selectedCategories.includes(category);
+        const priceMatch = price >= minPrice && price <= maxPrice;
+        
+        if (categoryMatch && priceMatch) {
+          product.style.display = 'block';
+          visibleCount++;
+        } else {
+          product.style.display = 'none';
+        }
+      });
+      
+      document.getElementById('productCount').textContent = visibleCount;
+    }
+
+    // Event listeners for filters
+    document.querySelectorAll('.filter-option input').forEach(input => {
+      input.addEventListener('change', filterProducts);
+    });
+
+    document.getElementById('priceRange').addEventListener('input', function() {
+      document.getElementById('maxPrice').value = this.value;
+      filterProducts();
+    });
+
+    document.getElementById('minPrice').addEventListener('input', filterProducts);
+    document.getElementById('maxPrice').addEventListener('input', filterProducts);
+
+    // Clear filters functionality
+    document.querySelector('.clear-filters').addEventListener('click', function() {
+      // Uncheck all category checkboxes
+      document.querySelectorAll('.filter-option input').forEach(input => {
+        input.checked = false;
+      });
+      
+      // Reset price range
+      document.getElementById('priceRange').value = 100000;
+      document.getElementById('minPrice').value = 0;
+      document.getElementById('maxPrice').value = 100000;
+      
+      // Reset sort
+      document.getElementById('sortSelect').value = 'relevance';
+      
+      // Apply filters
+      filterProducts();
+      
+      showNotification('All filters cleared!');
+    });
+
+    // Sort functionality
+    document.getElementById('sortSelect').addEventListener('change', function() {
+      const sortBy = this.value;
+      const productsGrid = document.getElementById('productsGrid');
+      const products = Array.from(productsGrid.children);
+      
+      products.sort((a, b) => {
+        const priceA = parseInt(a.dataset.price);
+        const priceB = parseInt(b.dataset.price);
+        const ratingA = parseFloat(a.dataset.rating);
+        const ratingB = parseFloat(b.dataset.rating);
+        
+        switch(sortBy) {
+          case 'price-low':
+            return priceA - priceB;
+          case 'price-high':
+            return priceB - priceA;
+          case 'rating':
+            return ratingB - ratingA;
+          default:
+            return 0;
+        }
+      });
+      
+      products.forEach(product => productsGrid.appendChild(product));
+    });
+
+    // Category menu functionality
+    const categoryBtn = document.getElementById('categoryBtn');
+    const megaMenu = document.getElementById('megaMenu');
+
+    categoryBtn.addEventListener('click', function() {
+      megaMenu.classList.toggle('active');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!categoryBtn.contains(e.target) && !megaMenu.contains(e.target)) {
+        megaMenu.classList.remove('active');
+      }
+    });
+
+    // User dropdown functionality
+    const userBtn = document.getElementById('userBtn');
+    const userDropdown = document.getElementById('userDropdown');
+
+    userBtn.addEventListener('click', function() {
+      console.log('User button clicked'); // Debug log
+      userDropdown.classList.toggle('active');
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!userBtn.contains(e.target) && !userDropdown.contains(e.target)) {
+        userDropdown.classList.remove('active');
+      }
+    });
+
+    // Chatbot functionality
+    const chatToggle = document.getElementById('chatToggle');
+    const chatContainer = document.getElementById('chatContainer');
+    const closeChat = document.getElementById('closeChat');
+
+    chatToggle.addEventListener('click', function() {
+      chatContainer.classList.toggle('hidden');
+    });
+
+    closeChat.addEventListener('click', function() {
+      chatContainer.classList.add('hidden');
+    });
+
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const message = input.value.trim();
+      
+      if (message) {
+        addChatMessage('user', message);
+        input.value = '';
+        
+        // Simulate AI response
+        setTimeout(() => {
+          const responses = [
+            'I can help you find the perfect product! What are you looking for?',
+            'Great choice! That product has excellent reviews.',
+            'Would you like me to show you similar products?',
+            'I can help you compare prices and features.',
+            'Let me know if you need any assistance with your purchase!'
+          ];
+          const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+          addChatMessage('bot', randomResponse);
+        }, 1000);
+      }
+    }
+
+    function addChatMessage(type, message) {
+      const chatLog = document.getElementById('chatLog');
+      const messageDiv = document.createElement('div');
+      messageDiv.className = `chat-message ${type}`;
+      
+      const icon = type === 'user' ? 'fas fa-user' : 'fas fa-robot';
+      messageDiv.innerHTML = `
+        <i class="${icon}"></i>
+        <div class="message-content">${message}</div>
+      `;
+      
+      chatLog.appendChild(messageDiv);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }
+
+    // Notification system
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.classList.add('show');
+      }, 100);
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 3000);
+    }
+
+    // Initialize
+    window.onload = function() {
+      checkAuthStatus();
+      updateCartDisplay();
+      filterProducts();
+      
+      // Test user menu functionality
+      console.log('Products page loaded');
+      const userMenu = document.getElementById('userMenu');
+      const authButtons = document.getElementById('authButtons');
+      console.log('User menu display:', userMenu.style.display);
+      console.log('Auth buttons display:', authButtons.style.display);
+    };
+  </script>
+</body>
+</html>
+
+

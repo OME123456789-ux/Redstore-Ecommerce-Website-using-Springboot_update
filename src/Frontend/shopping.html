@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RedStore - Your Ultimate Shopping Destination with millions of products and amazing deals" />
+  <meta name="keywords" content="e-commerce, online shopping, deals, electronics, fashion, home" />
+  <link rel="stylesheet" href="shopping.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <title>RedStore - Your Ultimate Shopping Destination</title>
+</head>
+<body>
+  
+  <header class="header">
+    
+    
+    <div class="header-main">
+      <div class="container">
+        <div class="logo">
+            <img src="../../assests/logo.png" alt="RedStore">    
+        </div>
+        
+        <div class="search-container">
+          <div class="search-box">
+            <select class="category-select">
+              <option>All Categories</option>
+              <option>Electronics</option>
+              <option>Fashion</option>
+              <option>Home & Kitchen</option>
+              <option>Beauty</option>
+              <option>Sports</option>
+            </select>
+            <input type="text" id="searchInput" placeholder="Search for products, brands and more..." />
+            <button class="search-btn"><i class="fas fa-search"></i></button>
+          </div>
+          <div class="search-suggestions" id="searchSuggestions"></div>
+        </div>
+        
+        <div class="header-actions">
+          <div class="auth-buttons" id="authButtons">
+            <a href="Login.html" class="auth-btn login-btn">
+              <i class="fas fa-sign-in-alt"></i>
+              <span>Login</span>
+            </a>
+            <a href="signup.html" class="auth-btn signup-btn">
+              <i class="fas fa-user-plus"></i>
+              <span>Sign Up</span>
+            </a>
+          </div>
+          
+          <div class="user-menu" id="userMenu" style="display: none;">
+            <button class="user-btn" id="userBtn">
+              <i class="fas fa-user"></i>
+              <span>Account</span>
+            </button>
+            <div class="user-dropdown" id="userDropdown">
+              <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span id="userName">Welcome to RedStore</span>
+              </div>
+              <a href="Account.html" class="dropdown-item"><i class="fas fa-user"></i> My Account</a>
+              <a href="#" class="dropdown-item"><i class="fas fa-heart"></i> Wishlist</a>
+              <a href="#" class="dropdown-item"><i class="fas fa-box"></i> Orders</a>
+              <a href="#" class="dropdown-item" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+          </div>
+          
+          <div class="cart-menu">
+            <a href="cart.html" class="cart-btn">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count" id="cartCount">0</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <nav class="main-nav">
+      <div class="container">
+        <div class="nav-left">
+          <div class="category-menu">
+            <button class="category-btn">
+              <i class="fas fa-bars"></i>
+              All Categories
+            </button>
+            <div class="mega-menu" id="megaMenu">
+              <div class="mega-menu-content">
+                <div class="menu-column">
+                  <h4>Electronics</h4>
+                  <ul>
+                    <li><a href="#">Smartphones</a></li>
+                    <li><a href="#">Laptops</a></li>
+                    <li><a href="#">TVs & Audio</a></li>
+                    <li><a href="#">Cameras</a></li>
+                  </ul>
+                </div>
+                <div class="menu-column">
+                  <h4>Fashion</h4>
+                  <ul>
+                    <li><a href="#">Men's Clothing</a></li>
+                    <li><a href="#">Women's Fashion</a></li>
+                    <li><a href="#">Kids Wear</a></li>
+                    <li><a href="#">Footwear</a></li>
+                  </ul>
+                </div>
+                <div class="menu-column">
+                  <h4>Home & Living</h4>
+                  <ul>
+                    <li><a href="#">Furniture</a></li>
+                    <li><a href="#">Kitchen & Dining</a></li>
+                    <li><a href="#">Home Decor</a></li>
+                    <li><a href="#">Bedding</a></li>
+                  </ul>
+                </div>
+                <div class="menu-column">
+                  <h4>Beauty & Health</h4>
+                  <ul>
+                    <li><a href="#">Makeup</a></li>
+                    <li><a href="#">Skincare</a></li>
+                    <li><a href="#">Hair Care</a></li>
+                    <li><a href="#">Fragrances</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#deals">Deals</a></li>
+            <li><a href="#new">New Arrivals</a></li>
+            <li><a href="#brands">Brands</a></li>
+            <li><a href="#offers">Offers</a></li>
+          </ul>
+        </div>
+        
+        <div class="nav-right">
+          <div class="location-selector">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Deliver to: Address</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero-section" id="home">
+    <div class="hero-slider">
+      <div class="hero-slide active">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1>Welcome to RedStore</h1>
+            <h2>Your Ultimate Shopping Destination</h2>
+            <p>Discover amazing deals on millions of products</p>
+            <div class="hero-buttons">
+              <a href="products.html" class="btn btn-primary">Shop Now</a>
+              <a href="#deals" class="btn btn-secondary">View Deals</a>
+            </div>
+          </div>
+          <div class="hero-image">
+            <img src="../../assests/image1.png" alt="Hero Image" />
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-indicators">
+      <span class="indicator active"></span>
+      <span class="indicator"></span>
+      <span class="indicator"></span>
+    </div>
+  </section>
+
+  <section class="quick-categories">
+    <div class="container">
+      <div class="category-grid">
+        <div class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h3>Electronics</h3>
+          <p>Up to 60% off</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-tshirt"></i>
+          </div>
+          <h3>Fashion</h3>
+          <p>Starting ₹199</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-home"></i>
+          </div>
+          <h3>Home & Living</h3>
+          <p>Flat 40% off</p>
+        </div>
+        <div class="category-card">
+          <div class="category-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Beauty</h3>
+          <p>Buy 2 Get 1</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Deals -->
+  <section class="featured-deals" id="deals">
+    <div class="container">
+      <div class="section-header">
+        <h2>🔥 Hot Deals</h2>
+        <p>Limited time offers you can't miss</p>
+      </div>
+      
+      <div class="deals-grid">
+        <div class="deal-card">
+          <div class="deal-badge">60% OFF</div>
+                      <img src="../../assests/black friday.jpeg" alt="Black Friday Deal" onerror="this.src='../../assests/product-1.jpg'" />
+          <div class="deal-content">
+            <h3>Black Friday Sale</h3>
+            <p>Flat 60% off on all electronics</p>
+            <div class="deal-price">
+              <span class="original-price">₹999</span>
+              <span class="current-price">₹399</span>
+            </div>
+
+          </div>
+        </div>
+        
+        <div class="deal-card">
+          <div class="deal-badge">70% OFF</div>
+                      <img src="../../assests/trendy.jpeg" alt="Fashion Sale" onerror="this.src='../../assests/product-2.jpg'" />
+          <div class="deal-content">
+            <h3>Fashion Bonanza</h3>
+            <p>Trendy clothing at unbelievable prices</p>
+            <div class="deal-price">
+              <span class="original-price">₹1499</span>
+              <span class="current-price">₹449</span>
+            </div>
+
+          </div>
+        </div>
+        
+        <div class="deal-card">
+          <div class="deal-badge">BOGO</div>
+                      <img src="../../assests/get1.jpeg" alt="Buy 1 Get 1" onerror="this.src='../../assests/product-3.jpg'" />
+          <div class="deal-content">
+            <h3>Buy 1 Get 1 Free</h3>
+            <p>On all accessories and beauty products</p>
+            <div class="deal-price">
+              <span class="original-price">₹799</span>
+              <span class="current-price">₹399</span>
+            </div>
+
+          </div>
+        </div>
+        
+        <div class="deal-card">
+          <div class="deal-badge">NEW</div>
+                      <img src="../../assests/phone.jpeg" alt="New Arrivals" onerror="this.src='../../assests/product-4.jpg'" />
+          <div class="deal-content">
+            <h3>New Arrivals</h3>
+            <p>Latest gadgets and gizmos</p>
+            <div class="deal-price">
+              <span class="original-price">₹2999</span>
+              <span class="current-price">₹1999</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Products -->
+  <section class="featured-products" id="products">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Products</h2>
+        <p>Handpicked products for you</p>
+      </div>
+      
+      <div class="products-grid">
+        <div class="product-card">
+          <div class="product-image">
+            <img src="../../assests/Premium Smartphone.jpeg" alt="Premium Smartphone" onerror="this.src='../../assests/Premium Smartphone.jpeg'" />
+            <div class="product-overlay">
+              <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+              <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Premium Smartphone</h3>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>(4.5)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">₹15,999</span>
+              <span class="original-price">₹19,999</span>
+              <span class="discount">20% off</span>
+            </div>
+
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image">
+            <img src="../../assests/Wireless Headphones.jpeg" alt="Wireless Headphones" onerror="this.src='../../assests/Wireless Headphones.jpeg'" />
+            <div class="product-overlay">
+              <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+              <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Wireless Headphones</h3>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <span>(4.0)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">₹2,499</span>
+              <span class="original-price">₹3,999</span>
+              <span class="discount">38% off</span>
+            </div>
+
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image">
+            <img src="../../assests/Gaming Laptop.jpeg" alt="Gaming Laptop" onerror="this.src='../../assests/Gaming Laptop.jpeg'" />
+            <div class="product-overlay">
+              <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+              <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Gaming Laptop</h3>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(4.8)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">₹45,999</span>
+              <span class="original-price">₹59,999</span>
+              <span class="discount">23% off</span>
+            </div>
+
+          </div>
+        </div>
+        
+        <div class="product-card">
+          <div class="product-image">
+            <img src="../../assests/Smart Watch.jpeg" alt="Smart Watch" onerror="this.src='../../assests/Smart Watch.jpeg'" />
+            <div class="product-overlay">
+              <button class="wishlist-btn"><i class="fas fa-heart"></i></button>
+              <button class="quick-view-btn"><i class="fas fa-eye"></i></button>
+            </div>
+          </div>
+          <div class="product-info">
+            <h3>Smart Watch</h3>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <span>(4.6)</span>
+            </div>
+            <div class="product-price">
+              <span class="current-price">₹1,999</span>
+              <span class="original-price">₹3,499</span>
+              <span class="discount">43% off</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Top Offers Section -->
+  <section class="top-offers" id="offers">
+    <div class="container">
+      <div class="section-header">
+        <h2>Top Offers</h2>
+        <p>Best deals curated just for you</p>
+      </div>
+      
+      <div class="offers-grid">
+        <div class="offer-card">
+                      <img src="../../assests/top offers1.webp" alt="Offer 1" />
+          <div class="offer-content">
+            <h3>Electronics Sale</h3>
+            <p>Up to 70% off on smartphones</p>
+          </div>
+        </div>
+        <div class="offer-card">
+                      <img src="../../assests/top offers2.webp" alt="Offer 2" />
+          <div class="offer-content">
+            <h3>Fashion Week</h3>
+            <p>Trendy clothes starting ₹299</p>
+          </div>
+        </div>
+        <div class="offer-card">
+                      <img src="../../assests/top offers3.webp" alt="Offer 3" />
+          <div class="offer-content">
+            <h3>Home Essentials</h3>
+            <p>Kitchen appliances at best prices</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Brands -->
+  <section class="featured-brands" id="brands">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Brands</h2>
+        <p>Shop from your favorite brands</p>
+      </div>
+      
+      <div class="brands-grid">
+        <div class="brand-card">
+                      <img src="../../assests/uspolo.jpg" alt="US Polo" />
+          <h3>US Polo</h3>
+        </div>
+        <div class="brand-card">
+                      <img src="../../assests/h&m.webp" alt="H&M" />
+          <h3>H&M</h3>
+        </div>
+        <div class="brand-card">
+                      <img src="../../assests/wrogn.webp" alt="WROGN" />
+          <h3>WROGN</h3>
+        </div>
+        <div class="brand-card">
+                      <img src="../../assests/ZARA.jpeg" alt="Zara" />
+          <h3>Zara</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <h2>Get in Touch</h2>
+        <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+      </div>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Visit Us</h3>
+              <p>123 Shopping Mall, Tech Park<br>Bangalore, Karnataka 560001<br>India</p>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Call Us</h3>
+              <p>+91 9492451504<br>+91 80 1234 5678<br>Mon-Sat: 9:00 AM - 8:00 PM</p>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Email Us</h3>
+                              <p>support@redstore.com<br>sales@redstore.com<br>info@redstore.com</p>
+            </div>
+          </div>
+          
+          <div class="contact-card">
+            <div class="contact-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <div class="contact-details">
+              <h3>Business Hours</h3>
+              <p>Monday - Friday: 9:00 AM - 8:00 PM<br>Saturday: 10:00 AM - 6:00 PM<br>Sunday: 11:00 AM - 5:00 PM</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-form-container">
+          <div class="contact-form">
+            <h3>Send us a Message</h3>
+            <form id="contactForm">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="firstName">First Name *</label>
+                  <input type="text" id="firstName" name="firstName" required>
+                </div>
+                <div class="form-group">
+                  <label for="lastName">Last Name *</label>
+                  <input type="text" id="lastName" name="lastName" required>
+                </div>
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email Address *</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+              </div>
+              
+              <div class="form-group">
+                <label for="subject">Subject *</label>
+                <select id="subject" name="subject" required>
+                  <option value="">Select a subject</option>
+                  <option value="general">General Inquiry</option>
+                  <option value="support">Customer Support</option>
+                  <option value="order">Order Status</option>
+                  <option value="return">Returns & Refunds</option>
+                  <option value="partnership">Partnership</option>
+                  <option value="feedback">Feedback</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Message *</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Tell us how we can help you..."></textarea>
+              </div>
+              
+              <div class="form-group">
+                <label class="checkbox-label">
+                  <input type="checkbox" id="newsletter" name="newsletter">
+                  <span class="checkmark"></span>
+                  Subscribe to our newsletter for updates and offers
+                </label>
+              </div>
+              
+              <button type="submit" class="btn btn-primary submit-btn">
+                <i class="fas fa-paper-plane"></i>
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-map">
+        <div class="map-container">
+          <div class="map-placeholder">
+            <i class="fas fa-map"></i>
+            <h3>Our Location</h3>
+            <p>123 Shopping Mall, Tech Park, Bangalore</p>
+            <button class="btn btn-secondary" onclick="openMap()">
+              <i class="fas fa-directions"></i>
+              Get Directions
+            </button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="contact-stats">
+        <div class="stat-item">
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Customer Support</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">2hr</div>
+          <div class="stat-label">Response Time</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Satisfaction Rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">50K+</div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI Chatbot -->
+  <div id="chatToggle" class="chatbot-icon">
+    <i class="fas fa-comments"></i>
+  </div>
+  <div id="chatContainer" class="chat-container hidden">
+    <div class="chat-header">
+      <i class="fas fa-robot"></i>
+      <span>AI Shopping Assistant</span>
+      <button class="close-chat" onclick="toggleChat()">×</button>
+    </div>
+    <div id="chatLog" class="chat-log">
+      <div class="chat-message bot">
+        <i class="fas fa-robot"></i>
+        <div class="message-content">
+          <p>Hello! I'm your AI shopping assistant. How can I help you today?</p>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <textarea id="userInput" placeholder="Type your message..."></textarea>
+      <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" id="contact-section">
+    <div class="footer-container">
+      <div class="footer-column">
+        <h3>About RedStore</h3>
+        <ul>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press & Media</a></li>
+          <li><a href="#">RedStore Science</a></li>
+          <li><a href="#">Investor Relations</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Connect With Us</h3>
+        <ul>
+          <li><a href="#">Facebook</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+          <li><a href="#">YouTube</a></li>
+          <li><a href="#">LinkedIn</a></li>
+        </ul>
+        <div class="contact-info">
+          <p><i class="fas fa-phone"></i> 9492451504</p>
+          <p><i class="fas fa-envelope"></i> <a href="mailto:mothukuriomeprakash@gmail.com">mothukuriomeprakash@gmail.com</a></p>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Make Money With Us</h3>
+        <ul>
+          <li><a href="#">Sell on RedStore</a></li>
+          <li><a href="#">Become an Affiliate</a></li>
+          <li><a href="#">Advertise Your Products</a></li>
+          <li><a href="#">RedStore Pay</a></li>
+          <li><a href="#">RedStore Business</a></li>
+          <li><a href="#">RedStore Fresh</a></li>
+          <li><a href="#">RedStore Prime</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Let Us Help You</h3>
+        <ul>
+          <li><a href="#">Your Account</a></li>
+          <li><a href="#">Returns Centre</a></li>
+          <li><a href="#">100% Purchase Protection</a></li>
+          <li><a href="#">RedStore App Download</a></li>
+          <li><a href="#">Help</a></li>
+          <li><a href="#">Customer Service</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-separator"></div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <div class="footer-logo">
+          <span class="logo-text">RedStore</span>
+        </div>
+        <div class="footer-language">
+          <select class="language-select">
+            <option>English</option>
+            <option>Hindi</option>
+            <option>Telugu</option>
+            <option>Tamil</option>
+          </select>
+          <span class="country">India</span>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="#">Conditions of Use & Sale</a>
+        <a href="#">Privacy Notice</a>
+        <a href="#">Interest-Based Ads</a>
+        <a href="#">Cookie Preferences</a>
+        <span class="copyright">© 2025 RedStore.com, Inc. All rights reserved.</span>
+      </div>
+    </div>
+    
+  </footer>
+
+  <script>
+
+    // User dropdown functionality
+    document.getElementById('userBtn').addEventListener('click', function() {
+      document.getElementById('userDropdown').classList.toggle('active');
+    });
+
+    // Category menu functionality
+    document.querySelector('.category-btn').addEventListener('click', function() {
+      document.getElementById('megaMenu').classList.toggle('active');
+    });
+
+    // Chat functionality
+    function toggleChat() {
+      const chatContainer = document.getElementById('chatContainer');
+      chatContainer.classList.toggle('hidden');
+    }
+
+    document.getElementById('chatToggle').addEventListener('click', toggleChat);
+
+    async function sendMessage() {
+      const input = document.getElementById('userInput');
+      const message = input.value.trim();
+      if (!message) return;
+
+      const chatLog = document.getElementById('chatLog');
+      
+      // Add user message
+      chatLog.innerHTML += `
+        <div class="chat-message user">
+          <div class="message-content">
+            <p>${message}</p>
+          </div>
+          <i class="fas fa-user"></i>
+        </div>
+      `;
+
+      input.value = '';
+      chatLog.scrollTop = chatLog.scrollHeight;
+
+      // Simulate AI response
+      setTimeout(() => {
+        const responses = [
+          "I can help you find the best deals on electronics!",
+          "Looking for fashion items? Check out our latest collection.",
+          "Great choice! That product has excellent reviews.",
+          "Would you like me to show you similar products?",
+          "I can help you track your order or find customer support."
+        ];
+        const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+        
+        chatLog.innerHTML += `
+          <div class="chat-message bot">
+            <i class="fas fa-robot"></i>
+            <div class="message-content">
+              <p>${randomResponse}</p>
+            </div>
+          </div>
+        `;
+        chatLog.scrollTop = chatLog.scrollHeight;
+      }, 1000);
+    }
+
+    // Search suggestions
+    document.getElementById('searchInput').addEventListener('input', function(e) {
+      const query = e.target.value;
+      const suggestions = document.getElementById('searchSuggestions');
+      
+      if (query.length > 2) {
+        const mockSuggestions = [
+          `${query} smartphone`,
+          `${query} laptop`,
+          `${query} headphones`,
+          `${query} watch`
+        ];
+        
+        suggestions.innerHTML = mockSuggestions.map(suggestion => 
+          `<div class="suggestion-item">${suggestion}</div>`
+        ).join('');
+        suggestions.style.display = 'block';
+      } else {
+        suggestions.style.display = 'none';
+      }
+    });
+
+    // Notification system
+    function showNotification(message) {
+      const notification = document.createElement('div');
+      notification.className = 'notification';
+      notification.textContent = message;
+      document.body.appendChild(notification);
+      
+      setTimeout(() => {
+        notification.classList.add('show');
+      }, 100);
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+          document.body.removeChild(notification);
+        }, 300);
+      }, 3000);
+    }
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Contact form functionality (backend integration)
+    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      try {
+        const formData = new FormData(this);
+        const payload = Object.fromEntries(formData);
+        // enrich with username if logged in
+        const username = getCookie('auth_username');
+        if (username) payload.username = username;
+        // newsletter checkbox returns 'on' if checked
+        payload.newsletter = !!payload.newsletter;
+
+        const res = await fetch(`${API_BASE}/contact-messages`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        if (!res.ok) throw new Error('Failed to submit message');
+        showNotification('Thank you! Your message has been sent successfully. We\'ll get back to you soon!', 'success');
+        this.reset();
+      } catch (err) {
+        console.error(err);
+        showNotification('Could not send your message. Please try again later.', 'error');
+      }
+    });
+
+    // Map functionality
+    function openMap() {
+      const address = '123 Shopping Mall, Tech Park, Bangalore, Karnataka 560001, India';
+      const encodedAddress = encodeURIComponent(address);
+      const mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+      window.open(mapUrl, '_blank');
+    }
+
+    const API_BASE = 'http://localhost:8080/api';
+    function setCookie(name, value, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + (days*24*60*60*1000));
+      const expires = 'expires=' + d.toUTCString();
+      document.cookie = name + '=' + encodeURIComponent(value) + ';' + expires + ';path=/';
+    }
+    function getCookie(name) {
+      const cname = name + '=';
+      const decodedCookie = decodeURIComponent(document.cookie);
+      const ca = decodedCookie.split(';');
+      for (let i = 0; i < ca.length; i++) {
+        let c = ca[i].trim();
+        if (c.indexOf(cname) === 0) return c.substring(cname.length, c.length);
+      }
+      return '';
+    }
+
+    function getAuthUsername() {
+      try {
+        const fromStorage = localStorage.getItem('auth_username');
+        if (fromStorage) return fromStorage;
+      } catch (_) {}
+      return getCookie('auth_username');
+    }
+
+    function getAuthName() {
+      try {
+        const fromStorage = localStorage.getItem('auth_name');
+        if (fromStorage) return fromStorage;
+      } catch (_) {}
+      return getCookie('auth_name') || getAuthUsername();
+    }
+
+    // Authentication Functions
+    function checkAuthStatus() {
+      const username = getAuthUsername();
+      const authButtons = document.getElementById('authButtons');
+      const userMenu = document.getElementById('userMenu');
+      const userNameSpan = document.getElementById('userName');
+      
+      if (username) {
+        authButtons.style.display = 'none';
+        userMenu.style.display = 'block';
+        userNameSpan.textContent = `Welcome, ${getAuthName()}`;
+        updateCartCount();
+      } else {
+        authButtons.style.display = 'flex';
+        userMenu.style.display = 'none';
+      }
+    }
+
+    function logout() {
+      document.cookie = 'auth_username=; Max-Age=0; path=/';
+      document.cookie = 'auth_name=; Max-Age=0; path=/';
+      try {
+        localStorage.removeItem('auth_username');
+        localStorage.removeItem('auth_name');
+      } catch (_) {}
+      showNotification('You have been logged out successfully!');
+      checkAuthStatus();
+    }
+
+    // Enhanced Cart Management
+    async function fetchCart() {
+      const username = getAuthUsername();
+      if (!username) return [];
+      const res = await fetch(`${API_BASE}/cart/${encodeURIComponent(username)}`);
+      return res.ok ? await res.json() : [];
+    }
+
+    async function updateCartCount() {
+      const cart = await fetchCart();
+      const cartCountEl = document.getElementById('cartCount');
+      if (cartCountEl) {
+        const totalItems = cart.reduce((total, item) => total + (item.quantity || 0), 0);
+        cartCountEl.textContent = totalItems;
+      }
+    }
+
+    async function addToCart(productName, price, imageUrl = '../../assests/product-1.jpg', description = '') {
+      const username = getAuthUsername();
+      if (!username) { showNotification('Please login to add items to cart'); return; }
+      
+      // Get user's full name from cookie or use username as fallback
+      const fullName = getAuthName() || username;
+      
+      await fetch(`${API_BASE}/cart`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          username: username,
+          fullName: fullName,
+          name: productName,
+          price: Number(price),
+          imageUrl: imageUrl,
+          description: description || productName,
+          quantity: 1
+        })
+      });
+      await updateCartCount();
+      showNotification(`${productName} added to cart!`, 'success');
+    }
+
+    async function removeFromCart(productId) {
+      await fetch(`${API_BASE}/cart/${encodeURIComponent(productId)}`, { method: 'DELETE' });
+      await updateCartCount();
+      showNotification('Item removed from cart!');
+    }
+
+    async function updateCartItemQuantity(productId, quantity) {
+      if (quantity <= 0) {
+        await removeFromCart(productId);
+        return;
+      }
+      await fetch(`${API_BASE}/cart/${encodeURIComponent(productId)}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ quantity })
+      });
+      await updateCartCount();
+    }
+
+    async function clearCart() {
+      const username = getCookie('auth_username');
+      if (!username) return;
+      await fetch(`${API_BASE}/cart/clear/${encodeURIComponent(username)}`, { method: 'DELETE' });
+      await updateCartCount();
+      showNotification('Cart cleared!');
+    }
+
+    // Wishlist Management
+    // Wishlist (in-memory; no localStorage)
+    let wishlistCache = [];
+    function getWishlist() { return wishlistCache; }
+
+    function addToWishlist(productName, price, imageUrl) {
+      const wishlist = getWishlist();
+      const existingItem = wishlist.find(item => item.name === productName);
+      
+      if (!existingItem) {
+        wishlist.push({
+          id: Date.now().toString(),
+          name: productName,
+          price: price,
+          image: imageUrl,
+          addedAt: new Date().toISOString()
+        });
+        wishlistCache = wishlist;
+        showNotification(`${productName} added to wishlist!`);
+      } else {
+        showNotification(`${productName} is already in your wishlist!`);
+      }
+    }
+
+    function removeFromWishlist(productId) {
+      const wishlist = getWishlist();
+      const updatedWishlist = wishlist.filter(item => item.id !== productId);
+      wishlistCache = updatedWishlist;
+      showNotification('Item removed from wishlist!');
+    }
+
+    // Recent Views Management
+    // Recent views (in-memory)
+    let recentViewsCache = [];
+    function getRecentViews() { return recentViewsCache; }
+
+    function addToRecentViews(productName, price, imageUrl) {
+      const recentViews = getRecentViews();
+      const existingIndex = recentViews.findIndex(item => item.name === productName);
+      
+      if (existingIndex !== -1) {
+        recentViews.splice(existingIndex, 1);
+      }
+      
+      recentViews.unshift({
+        name: productName,
+        price: price,
+        image: imageUrl,
+        viewedAt: new Date().toISOString()
+      });
+      
+      // Keep only last 10 items
+      if (recentViews.length > 10) {
+        recentViews.splice(10);
+      }
+      
+      recentViewsCache = recentViews;
+    }
+
+    // User Settings Management
+    function getUserSettings() {
+      return {
+        theme: 'light',
+        language: 'en',
+        currency: 'INR',
+        notifications: true
+      };
+    }
+
+    function updateUserSettings(settings) {
+      // No-op without localStorage; integrate backend if needed
+    }
+
+    // Initialize
+    window.onload = function() {
+      checkAuthStatus();
+      updateCartCount();
+      
+      // Load user settings
+      const settings = getUserSettings();
+      if (settings.theme === 'dark') {
+        document.body.classList.add('dark-theme');
+      }
+      
+      // Show welcome message for returning users
+      const recentViews = getRecentViews();
+      if (recentViews.length > 0) {
+        showNotification('Welcome back! Continue shopping from where you left off.');
+      }
+    };
+
+    // Test function to add a sample product to cart
+    function testAddToCart() {
+      addToCart('Test Product', 999, '../../assests/product-1.jpg', 'A sample product for testing');
+      console.log('Test product added to cart');
+    }
+
+    // Export functions for use in other pages
+    window.RedStore = {
+      addToCart,
+      removeFromCart,
+      updateCartItemQuantity,
+      clearCart,
+      getCart: fetchCart,
+      addToWishlist,
+      removeFromWishlist,
+      getWishlist,
+      addToRecentViews,
+      getRecentViews,
+      getUserSettings,
+      updateUserSettings
+    };
+  </script>
+</body>
+</html>
